@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="BaseDatosGenNHibernate"
+		                   namespace="BaseDatosGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				<class name="UsuarioBasicoEN" table="UsuarioBasico"> 
+						<id name="Email" column="EmailUsuarioBasico"/> 
+			
+					
+					<property name="NombreUsu" type="string"> 
+						<column name="NombreUsu"  not-null="true"/>
+					</property>
+					<property name="Password" type="string"> 
+						<column name="Password"  not-null="true"/>
+					</property>
+					<property name="Logged" type="boolean"> 
+						<column name="logged"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioBasicoENReadAllHQL">from UsuarioBasicoEN</query>
+		</hibernate-mapping>
+	

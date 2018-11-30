@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="BaseDatosGenNHibernate"
+		                   namespace="BaseDatosGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				
+<joined-subclass name="UsuarioEN" extends="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioBasicoEN" table="Usuario"> 
+	<key>
+    	
+				<column name="EmailUsuarioBasico"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="Nombre"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="Apellidos"  not-null="true"/>
+					</property>
+					<property name="Direccion" type="string"> 
+						<column name="Direccion"  not-null="true"/>
+					</property>
+					<property name="Telefono" type="integer"> 
+						<column name="Telefono"  not-null="true"/>
+					</property>
+					<property name="FNacimiento" type="timestamp"> 
+						<column name="FNacimiento"  not-null="true"/>
+					</property>
+					<property name="CP" type="integer"> 
+						<column name="CP"  not-null="true"/>
+					</property>
+					<property name="Activo" type="boolean"> 
+						<column name="Activo"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Comentario" >
+							<key>
+							
+								
+								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Valoracion" >
+							<key>
+							
+								
+								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="PedidoRealizado" >
+							<key>
+							
+								
+								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN"/>
+					    </bag>
+					
+			
+		  			
+					
+							<many-to-one name="CarritoActual" class="BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN" >
+								<column name="FK_idPedido_idPedido_0"/> 
+        					</many-to-one>
+					 
+						
+			
+		  			
+						<bag name="Favoritos" table="[producto_0_usuario_0]" inverse="true" >
+							<key>
+								
+									<column name="FK_EmailUsuarioBasico_idUsuario_0"/> 
+							</key>
+      						<many-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN">
+									<column name="FK_idProducto_idFavoritos"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="DirEnvio" >
+							<key>
+							
+								
+								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="MetodoPago" >
+							<key>
+							
+								
+								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENgetUsuarioByNombreHQL"><![CDATA[FROM UsuarioEN as user WHERE user.Nombre LIKE '%'+:p_nombre +'%']]></query>
+		</hibernate-mapping>
+	
