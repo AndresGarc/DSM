@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="EjemploViernesGenNHibernate"
+		                   namespace="EjemploViernesGenNHibernate.EN.EjemploViernes">
+		    
+		    
+			
+				<class name="ClienteEN" table="Cliente"> 
+						<id name="DNI" column="DNI"/> 
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="FechaNac" type="date"> 
+						<column name="fechaNac"  not-null="true"/>
+					</property>
+					<property name="CodPostal" type="integer"> 
+						<column name="codPostal"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pedidos" >
+							<key>
+							
+								
+								<column name="FK_DNI_idCliente"/>
+					      	</key>
+							<one-to-many class="EjemploViernesGenNHibernate.EN.EjemploViernes.PedidoEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ClienteENReadAllHQL">from ClienteEN</query>
+		</hibernate-mapping>
+	

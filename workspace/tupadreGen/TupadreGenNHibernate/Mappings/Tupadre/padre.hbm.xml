@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="TupadreGenNHibernate"
+		                   namespace="TupadreGenNHibernate.EN.Tupadre">
+		    
+		    
+			
+				<class name="PadreEN" table="padre"> 
+				  	
+						<id name="Nombre" column="nombrePadre" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Edad" type="integer"> 
+						<column name="edad"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<bag name="Mujer" >
+							<key>
+							
+								
+								<column name="FK_nombrePadre_idMarido"/>
+					      	</key>
+							<one-to-many class="TupadreGenNHibernate.EN.Tupadre.MadreEN"/>
+					    </bag>
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PadreENReadAllHQL">from PadreEN</query>
+		</hibernate-mapping>
+	

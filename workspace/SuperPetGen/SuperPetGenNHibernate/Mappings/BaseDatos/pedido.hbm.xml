@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="SuperPetGenNHibernate"
+		                   namespace="SuperPetGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				<class name="PedidoEN" table="Pedido"> 
+				  	
+						<id name="Id" column="idPedido" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Fecha" type="date"> 
+						<column name="Fecha"  not-null="true"/>
+					</property>
+					<property name="TipoPago" type="string"> 
+						<column name="TipoPago"  not-null="true"/>
+					</property>
+					<property name="Estado" > 
+						<column name="Estado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="SuperPetGenNHibernate.EN.BaseDatos.UsuarioEN" >	
+								<column name="FK_EmailUsuarioBasico_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+					
+							   <one-to-one name="Usuario_0" class="SuperPetGenNHibernate.EN.BaseDatos.UsuarioEN" property-ref="CarritoActual" />							
+					 
+						
+			
+		  			
+						<bag name="LineaPedido" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idPedido_idPedido"/>
+					      	</key>
+							<one-to-many class="SuperPetGenNHibernate.EN.BaseDatos.LineaPedidoEN"/>
+					    </bag>
+					
+			
+		  			
+					
+							   <one-to-one name="Factura" class="SuperPetGenNHibernate.EN.BaseDatos.FacturaEN" property-ref="Pedido" />							
+					 
+						
+			
+		  			
+						<bag name="DirEnvio" table="[pedido_dirEnvio]"  >
+							<key>
+								
+									<column name="FK_idPedido_idPedido"/> 
+							</key>
+      						<many-to-many class="SuperPetGenNHibernate.EN.BaseDatos.DirEnvioEN">
+									<column name="FK_idDirEnvio_idDirEnvio"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<many-to-one name="MetodoPago" class="SuperPetGenNHibernate.EN.BaseDatos.MetodoPagoEN" >	
+								<column name="FK_idMetodoPago_idMetodoPago"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Envio" >
+							<key>
+							
+								
+								<column name="FK_idPedido_idPedido"/>
+					      	</key>
+							<one-to-many class="SuperPetGenNHibernate.EN.BaseDatos.EnvioEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="PedidoENReadAllHQL">from PedidoEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="BaseDatosGenNHibernate"
+		                   namespace="BaseDatosGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				<class name="ProductoEN" table="Producto"> 
+				  	
+						<id name="Id" column="idProducto" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="Nombre"  not-null="true"/>
+					</property>
+					<property name="URLFoto" type="string"> 
+						<column name="URLFoto"  not-null="true"/>
+					</property>
+					<property name="Precio" type="double"> 
+						<column name="Precio"  not-null="true"/>
+					</property>
+					<property name="Stock" type="integer"> 
+						<column name="Stock"  not-null="true"/>
+					</property>
+					<property name="ValoracionMedia" type="double"> 
+						<column name="valoracionMedia"  not-null="true"/>
+					</property>
+					<property name="Destacado" type="boolean"> 
+						<column name="destacado"  not-null="true"/>
+					</property>
+					<property name="Oferta" type="double"> 
+						<column name="oferta"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Categoria" class="BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN" >	
+								<column name="FK_idCategoria_idCategoria"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Comentario" >
+							<key>
+							
+								
+								<column name="FK_idProducto_idProducto"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Valoracion" >
+							<key>
+							
+								
+								<column name="FK_idProducto_idProducto"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="LineaPedido" >
+							<key>
+							
+								
+								<column name="FK_idProducto_idProducto"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.LineaPedidoEN"/>
+					    </bag>
+					
+			
+			
+		  			
+						<bag name="UsuarioFavorito" table="[producto_0_usuario_0]"  >
+							<key>
+								
+									<column name="FK_idProducto_idFavoritos"/> 
+							</key>
+      						<many-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN">
+									<column name="FK_EmailUsuarioBasico_idUsuario_0"/> 
+      						</many-to-many>
+    					</bag>
+			
+		  			
+						<bag name="ProductoDescripcion" >
+							<key>
+							
+								
+								<column name="FK_idProducto_idProducto"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ProductoDescripcionEN"/>
+					    </bag>
+					
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ProductoENReadAllHQL">from ProductoEN</query>
+		  <query name="ProductoENgetProductosByNombreHQL"><![CDATA[FROM ProductoEN pro WHERE pro.Nombre LIKE '%'+:p_nombre +'%']]></query>
+		  <query name="ProductoENgetAllProductosByPedidoHQL"><![CDATA[SELECT producto FROM ProductoEN producto INNER JOIN producto.LineaPedido as lnPed WHERE lnPed.Pedido.Id = :p_pedido]]></query>
+		  <query name="ProductoENgetProductosVendidosHQL"><![CDATA[SELECT prod, sum(lnPed.Cantidad) FROM ProductoEN as prod INNER JOIN prod.LineaPedido as lnPed ]]></query>
+		  <query name="ProductoENgetProductosNuevosHQL"><![CDATA[FROM ProductoEN as prod ORDER BY prod.Id desc]]></query>
+		  <query name="ProductoENgetProductosDestacadosHQL"><![CDATA[FROM ProductoEN as prod WHERE prod.Destacado = true]]></query>
+		  <query name="ProductoENgetProductoConOfertaHQL"><![CDATA[FROM ProductoEN prod WHERE prod.Oferta > 0]]></query>
+		  <query name="ProductoENgetFavoritosHQL"><![CDATA[SELECT prod FROM ProductoEN as prod INNER JOIN prod.UsuarioFavorito as favs WHERE favs.Email = :p_usuario]]></query>
+		  <query name="ProductoENgetProductosCompradosByUsuarioHQL"><![CDATA[SELECT prod FROM ProductoEN as prod INNER JOIN prod.LineaPedido as lnPed WHERE lnPed.Pedido.UsuarioPedido.Email = :p_usuario]]></query>
+		</hibernate-mapping>
+	

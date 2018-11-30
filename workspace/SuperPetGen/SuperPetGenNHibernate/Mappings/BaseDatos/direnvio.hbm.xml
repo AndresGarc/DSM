@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="SuperPetGenNHibernate"
+		                   namespace="SuperPetGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				<class name="DirEnvioEN" table="DirEnvio"> 
+				  	
+						<id name="Id" column="idDirEnvio" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Calle" type="string"> 
+						<column name="Calle"  not-null="true"/>
+					</property>
+					<property name="CP" type="integer"> 
+						<column name="CP"  not-null="true"/>
+					</property>
+					<property name="Localidad" type="string"> 
+						<column name="Localidad"  not-null="true"/>
+					</property>
+					<property name="Provincia" type="string"> 
+						<column name="Provincia"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pedido" table="[pedido_dirEnvio]" inverse="true" >
+							<key>
+								
+									<column name="FK_idDirEnvio_idDirEnvio"/> 
+							</key>
+      						<many-to-many class="SuperPetGenNHibernate.EN.BaseDatos.PedidoEN">
+									<column name="FK_idPedido_idPedido"/> 
+      						</many-to-many>
+    					</bag>
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="DirEnvioENReadAllHQL">from DirEnvioEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="BaseDatosGenNHibernate"
+		                   namespace="BaseDatosGenNHibernate.EN.BaseDatos">
+		    
+		    
+			
+				<class name="CategoriaEN" table="Categoria"> 
+				  	
+						<id name="Id" column="idCategoria" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="Nombre"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Supercategoria" class="BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN" >	
+								<column name="FK_idCategoria_idCategoria_0"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Subcategoria" >
+							<key>
+							
+								
+								<column name="FK_idCategoria_idCategoria_0"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Producto" >
+							<key>
+							
+								
+								<column name="FK_idCategoria_idCategoria"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="CategoriaDescripcion" >
+							<key>
+							
+								
+								<column name="FK_idCategoria_idCategoria"/>
+					      	</key>
+							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.CategoriaDescripcionEN"/>
+					    </bag>
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="CategoriaENReadAllHQL">from CategoriaEN</query>
+		  <query name="CategoriaENgetSubcategoriasHQL"><![CDATA[ SELECT subCat FROM CategoriaEN supCat INNER JOIN supCat.Subcategoria as subCat WHERE supCat .Id = :p_categoria]]></query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>BaseDatosGenNHibernate</RootNamespace>
+		    <AssemblyName>BaseDatosGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="Newtonsoft.Json, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\Newtonsoft.Json.dll</HintPath>
+		    </Reference>
+		     <Reference Include="jose-jwt, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\BaseDatosGenNHibernate\AppLib\jose-jwt.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		
+		<ItemGroup>
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\Iesi.Collections.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\log4net.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\NHibernate.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\nunit.core.dll" />
+		    <Content Include="..\BaseDatosGenNHibernate\AppLib\nunit.framework.dll" />
+  		    <Content Include="..\BaseDatosGenNHibernate\AppLib\jose-jwt.dll" />
+  		</ItemGroup>
+  		
+		<ItemGroup>
+			<Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Utils\Util.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	<Compile Include="CAD\BasicCAD.cs"/>
+	<Compile Include="CP\BasicCP.cs"/>
+	<Compile Include="EN\BaseDatos\ValoracionEN.cs" />
+	<Compile Include="CEN\BaseDatos\ValoracionCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IValoracionCAD.cs" />
+	<Compile Include="CAD\BaseDatos\ValoracionCAD.cs" />
+	<Compile Include="CP\BaseDatos\ValoracionCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\ComentarioEN.cs" />
+	<Compile Include="CEN\BaseDatos\ComentarioCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IComentarioCAD.cs" />
+	<Compile Include="CAD\BaseDatos\ComentarioCAD.cs" />
+	<Compile Include="CP\BaseDatos\ComentarioCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\UsuarioEN.cs" />
+	<Compile Include="CEN\BaseDatos\UsuarioCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IUsuarioCAD.cs" />
+	<Compile Include="CAD\BaseDatos\UsuarioCAD.cs" />
+	<Compile Include="CP\BaseDatos\UsuarioCP.cs" />
+			
+			
+			
+			
+			<Compile Include="CEN\BaseDatos\UsuarioCEN_Desactivate.cs" />
+			
+			
+			<Compile Include="CEN\BaseDatos\UsuarioCEN_CambiarEstado.cs" />
+			
+			
+			
+			
+			<Compile Include="CP\BaseDatos\UsuarioCP_RealizarValoracion.cs" />
+			
+	<Compile Include="EN\BaseDatos\CategoriaEN.cs" />
+	<Compile Include="CEN\BaseDatos\CategoriaCEN.cs" />
+	<Compile Include="CAD\BaseDatos\ICategoriaCAD.cs" />
+	<Compile Include="CAD\BaseDatos\CategoriaCAD.cs" />
+	<Compile Include="CP\BaseDatos\CategoriaCP.cs" />
+			
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\ProductoEN.cs" />
+	<Compile Include="CEN\BaseDatos\ProductoCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IProductoCAD.cs" />
+	<Compile Include="CAD\BaseDatos\ProductoCAD.cs" />
+	<Compile Include="CP\BaseDatos\ProductoCP.cs" />
+			
+			
+			
+			
+			
+			<Compile Include="CEN\BaseDatos\ProductoCEN_IncrementaStock.cs" />
+			
+			<Compile Include="CEN\BaseDatos\ProductoCEN_DecrementaStock.cs" />
+			
+			
+			
+			
+			
+			
+			<Compile Include="CEN\BaseDatos\ProductoCEN_CambiarDestacado.cs" />
+			
+			<Compile Include="CEN\BaseDatos\ProductoCEN_CambiarOferta.cs" />
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\PedidoEN.cs" />
+	<Compile Include="CEN\BaseDatos\PedidoCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IPedidoCAD.cs" />
+	<Compile Include="CAD\BaseDatos\PedidoCAD.cs" />
+	<Compile Include="CP\BaseDatos\PedidoCP.cs" />
+			
+			
+			
+			
+			
+			<Compile Include="CP\BaseDatos\PedidoCP_EnviarPedido.cs" />
+			
+			
+			
+			
+			<Compile Include="CP\BaseDatos\PedidoCP_PagarPedido.cs" />
+			
+			<Compile Include="CP\BaseDatos\PedidoCP_RecibirPedido.cs" />
+			
+			<Compile Include="CP\BaseDatos\PedidoCP_RechazarPedido.cs" />
+			
+	<Compile Include="EN\BaseDatos\LineaPedidoEN.cs" />
+	<Compile Include="CEN\BaseDatos\LineaPedidoCEN.cs" />
+	<Compile Include="CAD\BaseDatos\ILineaPedidoCAD.cs" />
+	<Compile Include="CAD\BaseDatos\LineaPedidoCAD.cs" />
+	<Compile Include="CP\BaseDatos\LineaPedidoCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\UsuarioBasicoEN.cs" />
+	<Compile Include="CEN\BaseDatos\UsuarioBasicoCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IUsuarioBasicoCAD.cs" />
+	<Compile Include="CAD\BaseDatos\UsuarioBasicoCAD.cs" />
+	<Compile Include="CP\BaseDatos\UsuarioBasicoCP.cs" />
+			<Compile Include="CEN\BaseDatos\UsuarioBasicoCEN_Login.cs" />
+			
+			<Compile Include="CEN\BaseDatos\UsuarioBasicoCEN_Logout.cs" />
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\AdministradorEN.cs" />
+	<Compile Include="CEN\BaseDatos\AdministradorCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IAdministradorCAD.cs" />
+	<Compile Include="CAD\BaseDatos\AdministradorCAD.cs" />
+	<Compile Include="CP\BaseDatos\AdministradorCP.cs" />
+			
+			
+			
+	<Compile Include="EN\BaseDatos\SliderEN.cs" />
+	<Compile Include="CEN\BaseDatos\SliderCEN.cs" />
+	<Compile Include="CAD\BaseDatos\ISliderCAD.cs" />
+	<Compile Include="CAD\BaseDatos\SliderCAD.cs" />
+	<Compile Include="CP\BaseDatos\SliderCP.cs" />
+			
+			
+			
+			
+			
+			<Compile Include="CEN\BaseDatos\SliderCEN_CambiarImagen.cs" />
+			
+	<Compile Include="EN\BaseDatos\ProductoDescripcionEN.cs" />
+	<Compile Include="CEN\BaseDatos\ProductoDescripcionCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IProductoDescripcionCAD.cs" />
+	<Compile Include="CAD\BaseDatos\ProductoDescripcionCAD.cs" />
+	<Compile Include="CP\BaseDatos\ProductoDescripcionCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\CategoriaDescripcionEN.cs" />
+	<Compile Include="CEN\BaseDatos\CategoriaDescripcionCEN.cs" />
+	<Compile Include="CAD\BaseDatos\ICategoriaDescripcionCAD.cs" />
+	<Compile Include="CAD\BaseDatos\CategoriaDescripcionCAD.cs" />
+	<Compile Include="CP\BaseDatos\CategoriaDescripcionCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\FacturaEN.cs" />
+	<Compile Include="CEN\BaseDatos\FacturaCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IFacturaCAD.cs" />
+	<Compile Include="CAD\BaseDatos\FacturaCAD.cs" />
+	<Compile Include="CP\BaseDatos\FacturaCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\DirEnvioEN.cs" />
+	<Compile Include="CEN\BaseDatos\DirEnvioCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IDirEnvioCAD.cs" />
+	<Compile Include="CAD\BaseDatos\DirEnvioCAD.cs" />
+	<Compile Include="CP\BaseDatos\DirEnvioCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\MetodoPagoEN.cs" />
+	<Compile Include="CEN\BaseDatos\MetodoPagoCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IMetodoPagoCAD.cs" />
+	<Compile Include="CAD\BaseDatos\MetodoPagoCAD.cs" />
+	<Compile Include="CP\BaseDatos\MetodoPagoCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\BaseDatos\EnvioEN.cs" />
+	<Compile Include="CEN\BaseDatos\EnvioCEN.cs" />
+	<Compile Include="CAD\BaseDatos\IEnvioCAD.cs" />
+	<Compile Include="CAD\BaseDatos\EnvioCAD.cs" />
+	<Compile Include="CP\BaseDatos\EnvioCP.cs" />
+			
+			
+			
+			
+			<Compile Include="CEN\BaseDatos\EnvioCEN_CambioEnvio.cs" />
+			
+	<Compile Include="Enumerated\BaseDatos\IdiomaEnum.cs" />
+	<Compile Include="Enumerated\BaseDatos\EstadoPedidoEnum.cs" />
+	<Compile Include="Enumerated\BaseDatos\TipoPagoEnum.cs" />
+	<Compile Include="Enumerated\BaseDatos\EstadoEnvioEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\BaseDatos\valoracion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\comentario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\categoria.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\producto.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\pedido.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\lineapedido.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\usuariobasico.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\administrador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\slider.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\productodescripcion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\categoriadescripcion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\factura.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\direnvio.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\metodopago.hbm.xml" />
+	<EmbeddedResource Include="Mappings\BaseDatos\envio.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+		  </ItemGroup>
+	 	
+		
+	
+		<ItemGroup>
+		    <ProjectReference Include="..\APIExterna\APIExterna.csproj">
+		      <Project>{4ade35c8-a0c3-49da-9e1a-11a53ca19214}</Project>
+		      <Name>APIExterna</Name>
+		    </ProjectReference>
+	    </ItemGroup>
+	    
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+		</Project>
