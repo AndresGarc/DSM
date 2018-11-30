@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="631" localization="OSGI-INF/l10n/bundle" name="SuperPet" project="SuperPet"/>
-	<bundle bundleID="632" localization="OSGI-INF/l10n/bundle" name="EjemploViernes" project="EjemploViernes"/>
-	<bundle bundleID="633" localization="OSGI-INF/l10n/bundle" name="BaseDatos" project="BaseDatos"/>
-</map>
