@@ -14,14 +14,12 @@ namespace MvcApplication1.Models
         [ScaffoldColumn(false)]
         public int IdCategoria { get; set; }
 
-        [ScaffoldColumn(false)]
-        public string NombreCategoria { get; set; }
+        
 
         [ScaffoldColumn(false)]
         public int IdSupercategoria { get; set; }
 
-        [ScaffoldColumn(false)]
-        public string NombreSupercategoria { get; set; }
+        
         /* No se si va por supercategoria o por subcategoria
         [ScaffoldColumn(false)]
         public string Subcategoria { get; set; }
@@ -64,5 +62,13 @@ namespace MvcApplication1.Models
 
         [ScaffoldColumn(false)]
         public double ValoracionMedia { get; set; }
+
+        [Display(Prompt = "Categoría del producto", Description = "Categoría del producto", Name = "Categoría ")]
+        [Required(ErrorMessage = "Debe indicar una categoría para el producto")]
+        public string NombreCategoria { get; set; }
+
+        [Display(Prompt = "Supercategoría del producto", Description = "Supercategoría del producto", Name = "Supercategoría ")]
+        [Required(ErrorMessage = "Debe indicar una supercategoría para el producto")]
+        public string NombreSupercategoria { get; set; }
     }
 }

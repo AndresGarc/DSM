@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace SuperPet.Controllers
 {
@@ -34,19 +35,50 @@ namespace SuperPet.Controllers
         }
 
         // GET: Producto/Create
-        public ActionResult Create()
+        public ActionResult Create(/*int id*/)//ahi iria el id de la categoria del articulo que queremos crear
         {
-            return View();
+            int id = 32769;
+            Producto prod = new Producto();
+            prod.IdCategoria = id;
+            return View(prod);
         }
 
         // POST: Producto/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        /*public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
 
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }*/
+        public ActionResult Create(Producto prod, HttpPostedFileBase file)
+        {
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
+
+            try
+            {
+                fileName = "/Images/Uploads/" + fileName;
+                ProductoCEN cen = new ProductoCEN();
+                cen.New_(prod.Nombre, fileName/*prod.Imagen*/, prod.Precio, prod.Stock, prod.IdCategoria, prod.ValoracionMedia,prod.Destacado,prod.Oferta);
+
+                // return RedirectToAction("PorCategoria", new { id = prod.IdCategoria });
                 return RedirectToAction("Index");
             }
             catch
