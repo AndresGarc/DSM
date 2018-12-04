@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN>
+﻿
+@model IEnumerable<SuperPet.Models.Categoria>
 <!--INDICE DE CATEGORIA-->
 @{
     ViewBag.Title = "Index";
@@ -12,38 +13,39 @@
 </p>
 
 <p>
-    @Html.ActionLink("Crear Subcategoria", "CreateSub")
+    @Html.ActionLink("Crear Supercategoria", "CreateSup")
 </p>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.NombreCat)
         </th>
 
         <th>
-            @Html.DisplayNameFor(model => model.Supercategoria)
+            @Html.DisplayNameFor(model => model.NombreSupcat)
         </th>
 
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCat)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Supercategoria.Nombre)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreSupcat)
+            </td>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>
