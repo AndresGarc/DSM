@@ -29,5 +29,7 @@ namespace SuperPet.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MvcApplication1.Models.Producto> Productoes { get; set; }
     }
 }

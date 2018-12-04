@@ -1,4 +1,4 @@
-﻿using BaseDatosGenNHibernate.CAD.BaseDatos;
+﻿/*using BaseDatosGenNHibernate.CAD.BaseDatos;
 using BaseDatosGenNHibernate.CEN.BaseDatos;
 using BaseDatosGenNHibernate.EN.BaseDatos;
 using System;
@@ -138,3 +138,4 @@ namespace SuperPet.Controllers
         }
     }
 }
+*/

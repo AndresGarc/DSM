@@ -1,11 +1,11 @@
-﻿@model IEnumerable<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>
+﻿@model IEnumerable<MvcApplication1.Models.Producto>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml"; //DEFINICION DEL MASTER TEMPLATE
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Productos de SuperPet</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -16,16 +16,16 @@
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.URLFoto)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Precio)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Stock)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ValoracionMedia)
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Destacado)
@@ -42,16 +42,16 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.URLFoto)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Precio)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Stock)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ValoracionMedia)
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagen)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Destacado)
@@ -60,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.Oferta)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
 }

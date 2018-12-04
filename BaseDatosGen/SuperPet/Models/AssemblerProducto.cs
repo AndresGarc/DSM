@@ -19,7 +19,7 @@ namespace MvcApplication1.Models
             prod.Imagen = en.URLFoto;
             prod.IdCategoria = en.Categoria.Id;
             prod.NombreCategoria = en.Categoria.Nombre;
-            //prod.Subcategoria = en.Categoria.Subcategoria;
+           // prod.Subcategoria = en.Categoria.Subcategoria;
             prod.Destacado = en.Destacado;
             prod.Oferta = en.Oferta;
             prod.ValoracionMedia = en.ValoracionMedia;
@@ -33,10 +33,11 @@ namespace MvcApplication1.Models
             //ver cuales del resto que aparecen en ProductoEN tengo que poner y como. valoracionmedia lo calcula una cp y no se si tengo que ponerlo
             //aqui o no por lo de que al crear me sale para anyadir el valor y no tiene que meterlo el admin
 
-            /*
-            prod.IdSupercategoria=en.Categoria.Supercategoria.Id;
-            prod.NombreSupercategoria=en.Categoria.Supercategoria.Nombre;
-            */
+            
+            //FALTA PONER LO DE SUPERCATEGORIA, PUEDE ESTAR MAL INICIALIZADO EN CREATEDB
+            //prod.IdSupercategoria=en.Categoria.Supercategoria.Id;
+            //prod.NombreSupercategoria=en.Categoria.Supercategoria.Nombre;
+            
             return prod;
 
 

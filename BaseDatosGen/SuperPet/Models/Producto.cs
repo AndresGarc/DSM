@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MvcApplication1.Models
 {
-    public class Producto//No se que hacer con los comentarios si cogerlos como lista o no cogerlos aqui porque necesito todos no uno
+    public class Producto//No se que hacer con los comentarios si cogerlos como lista o no cogerlos aqui porque necesito todos no uno, favoritos ni idea que hacer
     {
         [ScaffoldColumn(false)]
         public int id { get; set; }
@@ -16,6 +16,12 @@ namespace MvcApplication1.Models
 
         [ScaffoldColumn(false)]
         public string NombreCategoria { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int IdSupercategoria { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string NombreSupercategoria { get; set; }
         /* No se si va por supercategoria o por subcategoria
         [ScaffoldColumn(false)]
         public string Subcategoria { get; set; }
