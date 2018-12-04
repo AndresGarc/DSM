@@ -35,8 +35,8 @@ namespace MvcApplication1.Models
 
             
             //FALTA PONER LO DE SUPERCATEGORIA, PUEDE ESTAR MAL INICIALIZADO EN CREATEDB
-            //prod.IdSupercategoria=en.Categoria.Supercategoria.Id;
-            //prod.NombreSupercategoria=en.Categoria.Supercategoria.Nombre;
+            prod.IdSupercategoria=en.Categoria.Supercategoria.Id;
+            prod.NombreSupercategoria=en.Categoria.Supercategoria.Nombre;
             
             return prod;
 

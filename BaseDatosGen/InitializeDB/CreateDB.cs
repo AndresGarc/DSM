@@ -113,9 +113,9 @@ public static void InitializeData ()
                 subcats.Add (idCat2);
                 subcats.Add (idCat4);
 
-                cat.CrearSupercategoria(idCat, idCat2);//HALLO PRESINDETE
-                cat.CrearSupercategoria(idCat, idCat4);
-                cat.CrearSupercategoria(idCat, idCat6);
+                cat.CrearSupercategoria(idCat2, idCat);//HALLO PRESINDETE
+                cat.CrearSupercategoria(idCat4, idCat);
+                cat.CrearSupercategoria(idCat6, idCat);
 
                 //METER OFERTA WE
                 ProductoCEN proCEN = new ProductoCEN ();
