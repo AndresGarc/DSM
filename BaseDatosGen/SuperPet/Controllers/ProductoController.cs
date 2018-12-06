@@ -31,7 +31,12 @@ namespace SuperPet.Controllers
         // GET: Producto/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Producto prod = null;
+            SessionInitialize();
+            ProductoEN prodEN = new ProductoCAD(session).ReadOIDDefault(id);
+            prod = new AssemblerProducto().ConvertENToModelUI(prodEN);
+            SessionClose();
+            return View(prod);
         }
 
         // GET: Producto/Create
@@ -90,16 +95,34 @@ namespace SuperPet.Controllers
         // GET: Producto/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Producto prod = null;
+            SessionInitialize();
+            ProductoEN prodEN = new ProductoCAD(session).ReadOIDDefault(id);
+            prod = new AssemblerProducto().ConvertENToModelUI(prodEN);
+            SessionClose();
+            return View(prod);
         }
 
         // POST: Producto/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Producto prod, HttpPostedFileBase file)
         {
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
             try
             {
-                // TODO: Add update logic here
+                fileName = "/Images/Uploads/" + fileName;
+                ProductoCEN cen = new ProductoCEN();
+                cen.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock,prod.ValoracionMedia,prod.Destacado,prod.Oferta);
 
                 return RedirectToAction("Index");
             }
@@ -112,7 +135,27 @@ namespace SuperPet.Controllers
         // GET: Producto/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                // TODO: Add delete logic here
+                int idCategoria = -1;
+                SessionInitialize();
+                ProductoCAD prodCAD = new ProductoCAD(session);
+                ProductoCEN cen = new ProductoCEN(prodCAD);
+                ProductoEN prodEN = cen.MuestraProductoPorOID(id);
+                Producto prod = new AssemblerProducto().ConvertENToModelUI(prodEN);
+                idCategoria = prod.IdCategoria;
+                SessionClose();
+
+                new ProductoCEN().Destroy(id);
+
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Producto/Delete/5
