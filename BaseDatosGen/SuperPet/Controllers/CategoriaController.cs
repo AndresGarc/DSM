@@ -29,8 +29,9 @@ namespace SuperPet.Controllers
         {
             SessionInitialize();
             CategoriaEN catEN = new CategoriaCAD(session).MuestraCategoriaPorOID(id);
+            Categoria cat = new AssemblerCategoria().ConvertENToModelUI(catEN);
             SessionClose();
-            return View(catEN);
+            return View(cat);
         }
 
         //CREAR CATEGORIAS
@@ -38,13 +39,8 @@ namespace SuperPet.Controllers
         // GET: Categoria/Create
         public ActionResult Create()
         {
-            //CategoriaEN catEN = new CategoriaEN();
-            //return View(catEN);
             Categoria cat = new Categoria();
             return View(cat);
-
-
-
         }
 
         // POST: Categoria/Create
@@ -53,14 +49,6 @@ namespace SuperPet.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                /*
-                SessionInitialize();
-                CategoriaCAD catCad = new CategoriaCAD();
-                catCad.New_(catEN);
-                SessionClose();
-                return RedirectToAction("Index"); */
-
                 SessionInitialize();
                 CategoriaCAD catCad = new CategoriaCAD();
                 CategoriaCEN catCen = new CategoriaCEN(catCad);
@@ -115,16 +103,31 @@ namespace SuperPet.Controllers
         // GET: Categoria/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SessionInitialize();
+            CategoriaEN catEn = new CategoriaCAD(session).MuestraCategoriaPorOID(id);
+            Categoria cat = new AssemblerCategoria().ConvertENToModelUI(catEn);
+           
+            SessionClose();
+            return View(cat);
         }
 
         // POST: Categoria/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Categoria cat, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                SessionInitialize();
+                CategoriaCAD catCAD = new CategoriaCAD();
+                CategoriaCEN catCEN = new CategoriaCEN(catCAD);
+                catCEN.Modify(cat.id, cat.NombreCat);
+                int idsup = cat.idSuperCategoria;
+                //PRUEBA MODIFICAR LA CATEGORIA TAMBIEN
+               /* if (cat.NombreCat != null)
+                {
+                    catCEN.CrearSupercategoria(cat.id,idsup);
+                }*/
+                SessionClose();
 
                 return RedirectToAction("Index");
             }
@@ -137,8 +140,26 @@ namespace SuperPet.Controllers
         // GET: Categoria/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            try
+            {
+                SessionInitialize();
+                CategoriaCAD catCad = new CategoriaCAD();
+                CategoriaCEN catCen = new CategoriaCEN(catCad);
+                CategoriaEN catEN = new CategoriaCAD(session).MuestraCategoriaPorOID(id);
+                Categoria cat = new AssemblerCategoria().ConvertENToModelUI(catEN);
+
+                SessionClose();
+
+                catCen.Destroy(cat.id);
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+
+                return View();
+            }
+           }
 
         // POST: Categoria/Delete/5
         [HttpPost]

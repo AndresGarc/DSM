@@ -117,6 +117,9 @@ public static void InitializeData ()
                 cat.CrearSupercategoria(idCat4, idCat);
                 cat.CrearSupercategoria(idCat6, idCat);
 
+                CategoriaDescripcionCEN catdescCEN = new CategoriaDescripcionCEN();
+                
+
                 //METER OFERTA WE
                 ProductoCEN proCEN = new ProductoCEN ();
                 int idProducto = proCEN.New_ ("Correa", "url", 35.00, 6, idCat2, 7, false, 0);
