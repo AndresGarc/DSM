@@ -1,0 +1,50 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.bg_verde{
+    background-color: #39ff18;
+}
+.blanco{
+    background-color: whitesmoke;
+}
+.sinmargen{
+    margin:0;
+}
+.textonegro{
+    color: black;
+}
+.maxwidth{
+    width:100%;
+}
+.inline{
+    display: inline-block;
+}
+
+.alturaimagen{
+    height: 100%;
+}
+
+.nav-item:hover {
+    background-color: #269a14;
+}
+nav-item {
+    color: black !important;
+}
+.navegacion{
+    background-color:white;
+    border:none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #269a14;
+}
+
