@@ -5,80 +5,78 @@
     ViewBag.Title = "Home Page";
 }
 
-<a href="http://localhost:59271/Producto/Index">Todos los productos</a>
-<a href="http://localhost:59271/Categoria/Index">Todas las categorias</a>
+<h1>Productos Agotados</h1>
 
-
-<h2>Productos Agotados</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Destacado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Oferta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreSupercategoria)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Destacado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Oferta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCategoria)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreSupercategoria)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <tr class="bg-success">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destacado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oferta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreSupercategoria)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destacado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oferta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreSupercategoria)
+                </td>
+                <td>
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("DETALLES", "Details", new { id = item.id }) |
+                    @Html.ActionLink("BORRAR", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Categoria</h2>
+<h1>Categoria</h1>
 
 
 
@@ -20,37 +20,38 @@
     @Html.ActionLink("Crear Supercategoria", "CreateSup")
 </p>   -->
 
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <tr class="bg-success">
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCat)
+            </th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreCat)
-        </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreSupcat)
+            </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.NombreSupcat)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCat)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreSupcat)
-            </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCat)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreSupcat)
+                </td>
+
+                <td>
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("DETALLES", "Details", new { id = item.id }) |
+                    @Html.ActionLink("BORRAR", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

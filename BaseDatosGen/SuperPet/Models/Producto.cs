@@ -55,11 +55,7 @@ namespace MvcApplication1.Models
 
         [Display(Prompt = "Oferta del producto", Description = "Oferta del producto", Name = "Oferta ")]
         [Required(ErrorMessage = "Debe indicar una oferta para el producto, si no tiene oferta poner un 0")]
-<<<<<<< HEAD
-        [Range(minimum: 0, maximum: 1, ErrorMessage = "El oferta debe ser mayor que cero y menor de 1 (Ejemplo: 0,6)")]
-=======
         [Range(minimum: 0, maximum: 1, ErrorMessage = "El valor debe ser mayor/igual que cero y menor/igual que 1 (Ejemplo: 0,6)")]
->>>>>>> master
         public double Oferta { get; set; }
 
         [ScaffoldColumn(false)]

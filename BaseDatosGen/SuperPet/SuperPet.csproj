@@ -318,6 +318,9 @@
     <Content Include="Views\Categoria\Edit.cshtml" />
     <Content Include="Views\Slider\Edit.cshtml" />
     <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
