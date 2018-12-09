@@ -37,7 +37,6 @@ namespace MvcApplication1.Models
 
         [Display(Prompt = "Stock del producto", Description = "Stock del producto", Name = "Stock ")]
         [Required(ErrorMessage = "Debe indicar un stock para el producto")]
-        [DataType(DataType.Currency, ErrorMessage = "El stock debe ser un valor numérico")]
         [Range(minimum: 0, maximum: 10000, ErrorMessage = "El stock debe ser cero o mayor que cero")]
         public int Stock { get; set; }
 
@@ -56,8 +55,7 @@ namespace MvcApplication1.Models
 
         [Display(Prompt = "Oferta del producto", Description = "Oferta del producto", Name = "Oferta ")]
         [Required(ErrorMessage = "Debe indicar una oferta para el producto, si no tiene oferta poner un 0")]
-        [DataType(DataType.Currency, ErrorMessage = "El precio debe ser un valor numérico")]
-        [Range(minimum: 0, maximum: 1, ErrorMessage = "El oferta debe ser mayor que cero y menor de 1 (num. decimal)")]
+        [Range(minimum: 0, maximum: 1, ErrorMessage = "El oferta debe ser mayor que cero y menor de 1 (Ejemplo: 0,6)")]
         public double Oferta { get; set; }
 
         [ScaffoldColumn(false)]

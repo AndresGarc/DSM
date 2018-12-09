@@ -5,11 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Productos</h2>
 
+<button onclick="location.href='@Url.Action("Create")'" type="button" class="btn btn-success  btn-block">Crear Producto</button>
+<!--
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+    -->
 <table class="table">
     <tr>
         <th>

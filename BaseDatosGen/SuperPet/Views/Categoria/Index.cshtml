@@ -2,19 +2,24 @@
 @model IEnumerable<SuperPet.Models.Categoria>
 <!--INDICE DE CATEGORIA-->
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categorias";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Categoria</h2>
 
+
+
+<button onclick="location.href='@Url.Action("Create")'" type="button" class="btn btn-success  btn-block">Crear Categoria</button>
+<!--
 <p>
     @Html.ActionLink("Crear Categoria", "Create")
 </p>
 
 <p>
     @Html.ActionLink("Crear Supercategoria", "CreateSup")
-</p>
+</p>   -->
+
 
 <table class="table">
     <tr>
