@@ -14,6 +14,10 @@ namespace SuperPet.Controllers
     public class ProductoController : BasicController
     {
         // GET: Producto
+
+        //[Authorize] quien este autorizado podrá acceder 
+        //GARANTIZAR 100%
+        //[AllowAnonymous] -> asegura que una persona anónima puede acceder
         public ActionResult Index(/*int id*/)
         {
             

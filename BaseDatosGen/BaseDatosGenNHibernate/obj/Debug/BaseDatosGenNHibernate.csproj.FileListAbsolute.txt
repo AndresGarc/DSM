@@ -31,8 +31,8 @@ C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAG
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\bin\Debug\Iesi.Collections.dll
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\bin\Debug\Antlr3.Runtime.dll
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\bin\Debug\log4net.dll
-C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csprojAssemblyReference.cache
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csproj.CoreCompileInputs.cache
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csproj.CopyComplete
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.dll
 C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.pdb
+C:\Users\Andrés García Miras\Desktop\UA\3IM\1erCUAT\DSM\PRACTICASdsm\PRACTICAGIT\DSM\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csprojAssemblyReference.cache
