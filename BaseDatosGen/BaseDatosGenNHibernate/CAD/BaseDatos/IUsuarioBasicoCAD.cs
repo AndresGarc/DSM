@@ -6,7 +6,7 @@ namespace BaseDatosGenNHibernate.CAD.BaseDatos
 {
 public partial interface IUsuarioBasicoCAD
 {
-UsuarioBasicoEN ReadOIDDefault (string Email
+UsuarioBasicoEN ReadOIDDefault (int id
                                 );
 
 void ModifyDefault (UsuarioBasicoEN usuarioBasico);
@@ -17,12 +17,12 @@ System.Collections.Generic.IList<UsuarioBasicoEN> ReadAllDefault (int first, int
 
 
 
-string New_ (UsuarioBasicoEN usuarioBasico);
+int New_ (UsuarioBasicoEN usuarioBasico);
 
 void Modify (UsuarioBasicoEN usuarioBasico);
 
 
-void Destroy (string Email
+void Destroy (int id
               );
 }
 }

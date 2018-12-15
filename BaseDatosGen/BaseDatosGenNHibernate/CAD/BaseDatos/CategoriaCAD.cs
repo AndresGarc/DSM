@@ -321,5 +321,65 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Cate
 
         return result;
 }
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSubcategoriasByNombre (string p_nombre)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CategoriaEN self where  SELECT subCat FROM CategoriaEN supCat INNER JOIN supCat.Subcategoria as subCat WHERE supCat.Nombre LIKE '%' + :p_nombre +'%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CategoriaENgetSubcategoriasByNombreHQL");
+                query.SetParameter ("p_nombre", p_nombre);
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in CategoriaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSupercategoriasByNombre (string p_nombre)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM CategoriaEN self where FROM CategoriaEN as subCat WHERE subCat.Supercategoria.Nombre LIKE '%' + :p_nombre + '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("CategoriaENgetSupercategoriasByNombreHQL");
+                query.SetParameter ("p_nombre", p_nombre);
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in CategoriaCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

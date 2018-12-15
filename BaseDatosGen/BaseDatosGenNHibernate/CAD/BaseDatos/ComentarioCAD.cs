@@ -124,7 +124,7 @@ public int New_ (ComentarioEN comentario)
                 SessionInitializeTransaction ();
                 if (comentario.Usuario != null) {
                         // Argumento OID y no colección.
-                        comentario.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), comentario.Usuario.Email);
+                        comentario.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), comentario.Usuario.Id);
 
                         comentario.Usuario.Comentario
                         .Add (comentario);

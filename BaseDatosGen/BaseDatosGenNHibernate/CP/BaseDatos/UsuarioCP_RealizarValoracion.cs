@@ -21,7 +21,7 @@ namespace BaseDatosGenNHibernate.CP.BaseDatos
 {
 public partial class UsuarioCP : BasicCP
 {
-public void RealizarValoracion (string p_usuario, int p_producto, double p_valor)
+public void RealizarValoracion (int p_usuario, int p_producto, double p_valor)
 {
         /*PROTECTED REGION ID(BaseDatosGenNHibernate.CP.BaseDatos_Usuario_realizarValoracion) ENABLED START*/
 

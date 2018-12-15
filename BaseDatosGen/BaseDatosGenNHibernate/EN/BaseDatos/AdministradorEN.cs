@@ -13,24 +13,26 @@ public AdministradorEN() : base ()
 
 
 
-public AdministradorEN(string email,
-                       string nombreUsu, String password, bool logged
+public AdministradorEN(int id,
+                       string email, string nombreUsu, String password, bool logged
                        )
 {
-        this.init (Email, nombreUsu, password, logged);
+        this.init (Id, email, nombreUsu, password, logged);
 }
 
 
 public AdministradorEN(AdministradorEN administrador)
 {
-        this.init (Email, administrador.NombreUsu, administrador.Password, administrador.Logged);
+        this.init (Id, administrador.Email, administrador.NombreUsu, administrador.Password, administrador.Logged);
 }
 
-private void init (string Email
-                   , string nombreUsu, String password, bool logged)
+private void init (int id
+                   , string email, string nombreUsu, String password, bool logged)
 {
-        this.Email = Email;
+        this.Id = id;
 
+
+        this.Email = email;
 
         this.NombreUsu = nombreUsu;
 
@@ -46,7 +48,7 @@ public override bool Equals (object obj)
         AdministradorEN t = obj as AdministradorEN;
         if (t == null)
                 return false;
-        if (Email.Equals (t.Email))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -56,7 +58,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Email.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

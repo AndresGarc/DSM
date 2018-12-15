@@ -22,13 +22,6 @@ private string apellidos;
 
 
 /**
- *	Atributo direccion
- */
-private string direccion;
-
-
-
-/**
  *	Atributo telefono
  */
 private int telefono;
@@ -39,13 +32,6 @@ private int telefono;
  *	Atributo fNacimiento
  */
 private Nullable<DateTime> fNacimiento;
-
-
-
-/**
- *	Atributo cP
- */
-private int cP;
 
 
 
@@ -120,12 +106,6 @@ public virtual string Apellidos {
 
 
 
-public virtual string Direccion {
-        get { return direccion; } set { direccion = value;  }
-}
-
-
-
 public virtual int Telefono {
         get { return telefono; } set { telefono = value;  }
 }
@@ -134,12 +114,6 @@ public virtual int Telefono {
 
 public virtual Nullable<DateTime> FNacimiento {
         get { return fNacimiento; } set { fNacimiento = value;  }
-}
-
-
-
-public virtual int CP {
-        get { return cP; } set { cP = value;  }
 }
 
 
@@ -206,36 +180,32 @@ public UsuarioEN() : base ()
 
 
 
-public UsuarioEN(string email, string nombre, string apellidos, string direccion, int telefono, Nullable<DateTime> fNacimiento, int cP, bool activo, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN> comentario, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN> valoracion, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> pedidoRealizado, BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN carritoActual, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> favoritos, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN> dirEnvio, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN> metodoPago
-                 , string nombreUsu, String password, bool logged
+public UsuarioEN(int id, string nombre, string apellidos, int telefono, Nullable<DateTime> fNacimiento, bool activo, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN> comentario, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN> valoracion, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> pedidoRealizado, BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN carritoActual, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> favoritos, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN> dirEnvio, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN> metodoPago
+                 , string email, string nombreUsu, String password, bool logged
                  )
 {
-        this.init (Email, nombre, apellidos, direccion, telefono, fNacimiento, cP, activo, comentario, valoracion, pedidoRealizado, carritoActual, favoritos, dirEnvio, metodoPago, nombreUsu, password, logged);
+        this.init (Id, nombre, apellidos, telefono, fNacimiento, activo, comentario, valoracion, pedidoRealizado, carritoActual, favoritos, dirEnvio, metodoPago, email, nombreUsu, password, logged);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (Email, usuario.Nombre, usuario.Apellidos, usuario.Direccion, usuario.Telefono, usuario.FNacimiento, usuario.CP, usuario.Activo, usuario.Comentario, usuario.Valoracion, usuario.PedidoRealizado, usuario.CarritoActual, usuario.Favoritos, usuario.DirEnvio, usuario.MetodoPago, usuario.NombreUsu, usuario.Password, usuario.Logged);
+        this.init (Id, usuario.Nombre, usuario.Apellidos, usuario.Telefono, usuario.FNacimiento, usuario.Activo, usuario.Comentario, usuario.Valoracion, usuario.PedidoRealizado, usuario.CarritoActual, usuario.Favoritos, usuario.DirEnvio, usuario.MetodoPago, usuario.Email, usuario.NombreUsu, usuario.Password, usuario.Logged);
 }
 
-private void init (string Email
-                   , string nombre, string apellidos, string direccion, int telefono, Nullable<DateTime> fNacimiento, int cP, bool activo, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN> comentario, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN> valoracion, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> pedidoRealizado, BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN carritoActual, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> favoritos, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN> dirEnvio, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN> metodoPago, string nombreUsu, String password, bool logged)
+private void init (int id
+                   , string nombre, string apellidos, int telefono, Nullable<DateTime> fNacimiento, bool activo, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN> comentario, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN> valoracion, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> pedidoRealizado, BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN carritoActual, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> favoritos, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN> dirEnvio, System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN> metodoPago, string email, string nombreUsu, String password, bool logged)
 {
-        this.Email = Email;
+        this.Id = id;
 
 
         this.Nombre = nombre;
 
         this.Apellidos = apellidos;
 
-        this.Direccion = direccion;
-
         this.Telefono = telefono;
 
         this.FNacimiento = fNacimiento;
-
-        this.CP = cP;
 
         this.Activo = activo;
 
@@ -253,6 +223,8 @@ private void init (string Email
 
         this.MetodoPago = metodoPago;
 
+        this.Email = email;
+
         this.NombreUsu = nombreUsu;
 
         this.Password = password;
@@ -267,7 +239,7 @@ public override bool Equals (object obj)
         UsuarioEN t = obj as UsuarioEN;
         if (t == null)
                 return false;
-        if (Email.Equals (t.Email))
+        if (Id.Equals (t.Id))
                 return true;
         else
                 return false;
@@ -277,7 +249,7 @@ public override int GetHashCode ()
 {
         int hash = 13;
 
-        hash += this.Email.GetHashCode ();
+        hash += this.Id.GetHashCode ();
         return hash;
 }
 }

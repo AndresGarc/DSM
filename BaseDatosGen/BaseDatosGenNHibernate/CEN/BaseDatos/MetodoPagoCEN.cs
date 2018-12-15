@@ -39,7 +39,7 @@ public IMetodoPagoCAD get_IMetodoPagoCAD ()
         return this._IMetodoPagoCAD;
 }
 
-public int New_ (BaseDatosGenNHibernate.Enumerated.BaseDatos.TipoPagoEnum p_tipoPago, string p_usuario)
+public int New_ (BaseDatosGenNHibernate.Enumerated.BaseDatos.TipoPagoEnum p_tipoPago, int p_usuario)
 {
         MetodoPagoEN metodoPagoEN = null;
         int oid;
@@ -49,11 +49,11 @@ public int New_ (BaseDatosGenNHibernate.Enumerated.BaseDatos.TipoPagoEnum p_tipo
         metodoPagoEN.TipoPago = p_tipoPago;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
                 // Lista de oids id
                 metodoPagoEN.Usuario = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                metodoPagoEN.Usuario.Email = p_usuario;
+                metodoPagoEN.Usuario.Id = p_usuario;
         }
 
         //Call to MetodoPagoCAD

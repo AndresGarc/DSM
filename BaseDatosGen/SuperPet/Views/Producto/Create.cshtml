@@ -1,4 +1,6 @@
-﻿@using MvcApplication1.Models
+﻿
+
+@using MvcApplication1.Models
 @model MvcApplication1.Models.Producto
 
 @{
@@ -6,115 +8,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Introducir producto</h2>
+<h2>Crear producto</h2>
 
 @using (Html.BeginForm("Create", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <div class="row">
-        <div class="form-group col-md-6">
-            <!--NOMBRE-->
-
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-6">
-            <!--IMAGEN-->
-
-            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <input type="file" class="form-control-file border" name="file" />
-            </div>
-        </div>
-
+<fieldset>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nombre)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nombre)
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Imagen)
     </div>
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            <!--PRECIO-->
-
-            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-6">
-            <!--STOCK-->
-
-            @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
-            </div>
-
-        </div>
+    <div>
+        <input type="file" name="file" />
     </div>
 
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Precio)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Precio)
+        @Html.ValidationMessageFor(model => model.Precio)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Stock)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Stock)
+        @Html.ValidationMessageFor(model => model.Stock)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Descripcion)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Descripcion)
+        @Html.ValidationMessageFor(model => model.Descripcion)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.NombreCategoria)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.NombreCategoria)
+        @Html.ValidationMessageFor(model => model.NombreCategoria)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.NombreSupercategoria)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.NombreSupercategoria)
+        @Html.ValidationMessageFor(model => model.NombreSupercategoria)
+    </div>
     @Html.HiddenFor(model => Model.IdCategoria)
+    @Html.HiddenFor(model => Model.ValoracionMedia)
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            <!--OFERTA-->
-
-            @Html.LabelFor(model => model.Oferta, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.Oferta, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Oferta, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-6">
-            <!--DESTACADO-->
-
-            @Html.LabelFor(model => model.Destacado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.Destacado)
-                @Html.ValidationMessageFor(model => model.Destacado)
-            </div>
-        </div>
-
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Destacado)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Destacado)
+        @Html.ValidationMessageFor(model => model.Destacado)
     </div>
 
-    <div class="row">
-        <div class="form-group col-md-10">
-            <!--VALORACIONMEDIA-->
-
-            @Html.LabelFor(model => model.ValoracionMedia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                @Html.EditorFor(model => model.ValoracionMedia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ValoracionMedia, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Oferta)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Oferta)
+        @Html.ValidationMessageFor(model => model.Oferta)
     </div>
 
 
-
-        <div class="form-group">
-            <!--<input type="submit" value="Crear" class="btn btn-success col-md-6" />-->
-            <button type="submit" value="Crear" class="btn btn-success">Introducir</button>
-            <button onclick="location.href='@Url.Action("Index")'" type="button" class="btn btn-success">Volver</button>
-        </div>
-
-</div>
-
+    <p>
+        <input type="submit" value="Nuevo" />
+    </p>
+</fieldset>
 }
 
-
-
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-

@@ -39,10 +39,10 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged, string p_Nombre, string p_Apellidos, string p_Direccion, int p_Telefono, Nullable<DateTime> p_FNacimiento, int p_CP, bool p_Activo)
+public int New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged, string p_Nombre, string p_Apellidos, int p_Telefono, Nullable<DateTime> p_FNacimiento, bool p_Activo)
 {
         UsuarioEN usuarioEN = null;
-        string oid;
+        int oid;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
@@ -58,13 +58,9 @@ public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool 
 
         usuarioEN.Apellidos = p_Apellidos;
 
-        usuarioEN.Direccion = p_Direccion;
-
         usuarioEN.Telefono = p_Telefono;
 
         usuarioEN.FNacimiento = p_FNacimiento;
-
-        usuarioEN.CP = p_CP;
 
         usuarioEN.Activo = p_Activo;
 
@@ -74,32 +70,31 @@ public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool 
         return oid;
 }
 
-public void Modify (string p_Usuario_OID, string p_NombreUsu, String p_Password, bool p_logged, string p_Nombre, string p_Apellidos, string p_Direccion, int p_Telefono, Nullable<DateTime> p_FNacimiento, int p_CP, bool p_Activo)
+public void Modify (int p_Usuario_OID, string p_Email, string p_NombreUsu, String p_Password, bool p_logged, string p_Nombre, string p_Apellidos, int p_Telefono, Nullable<DateTime> p_FNacimiento, bool p_Activo)
 {
         UsuarioEN usuarioEN = null;
 
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
-        usuarioEN.Email = p_Usuario_OID;
+        usuarioEN.Id = p_Usuario_OID;
+        usuarioEN.Email = p_Email;
         usuarioEN.NombreUsu = p_NombreUsu;
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_Password);
         usuarioEN.Logged = p_logged;
         usuarioEN.Nombre = p_Nombre;
         usuarioEN.Apellidos = p_Apellidos;
-        usuarioEN.Direccion = p_Direccion;
         usuarioEN.Telefono = p_Telefono;
         usuarioEN.FNacimiento = p_FNacimiento;
-        usuarioEN.CP = p_CP;
         usuarioEN.Activo = p_Activo;
         //Call to UsuarioCAD
 
         _IUsuarioCAD.Modify (usuarioEN);
 }
 
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
-        _IUsuarioCAD.Destroy (Email);
+        _IUsuarioCAD.Destroy (id);
 }
 
 public System.Collections.Generic.IList<UsuarioEN> MuestraUsuarios (int first, int size)
@@ -109,12 +104,12 @@ public System.Collections.Generic.IList<UsuarioEN> MuestraUsuarios (int first, i
         list = _IUsuarioCAD.MuestraUsuarios (first, size);
         return list;
 }
-public UsuarioEN MuestraUsuarioPorOID (string Email
+public UsuarioEN MuestraUsuarioPorOID (int id
                                        )
 {
         UsuarioEN usuarioEN = null;
 
-        usuarioEN = _IUsuarioCAD.MuestraUsuarioPorOID (Email);
+        usuarioEN = _IUsuarioCAD.MuestraUsuarioPorOID (id);
         return usuarioEN;
 }
 
@@ -122,13 +117,13 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Usua
 {
         return _IUsuarioCAD.GetUsuarioByNombre (p_nombre, first, size);
 }
-public void AddFavoritos (string p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
+public void AddFavoritos (int p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
 {
         //Call to UsuarioCAD
 
         _IUsuarioCAD.AddFavoritos (p_Usuario_OID, p_favoritos_OIDs);
 }
-public void QuitarFavoritos (string p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
+public void QuitarFavoritos (int p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
 {
         //Call to UsuarioCAD
 

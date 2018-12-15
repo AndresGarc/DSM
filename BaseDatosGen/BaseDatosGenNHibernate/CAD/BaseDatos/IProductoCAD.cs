@@ -53,9 +53,23 @@ System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>
 System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductoConOferta (int first, int size);
 
 
-System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (string p_usuario, int first, int size);
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (int p_usuario, int first, int size);
 
 
-System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (string p_usuario, int first, int size);
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (int p_usuario, int first, int size);
+
+
+void CambiarCategoria (int p_Producto_OID, int p_categoria_OID);
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByNombreStock (string p_nombre);
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByPrecios (double? precio1, double ? precio2);
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByCategoria (string nombre);
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosBySuperCategoria (string nombre);
 }
 }

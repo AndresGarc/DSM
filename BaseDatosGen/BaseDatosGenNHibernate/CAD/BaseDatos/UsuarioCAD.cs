@@ -29,7 +29,7 @@ public UsuarioCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public UsuarioEN ReadOIDDefault (string Email
+public UsuarioEN ReadOIDDefault (int id
                                  )
 {
         UsuarioEN usuarioEN = null;
@@ -37,7 +37,7 @@ public UsuarioEN ReadOIDDefault (string Email
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), Email);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,7 @@ public void ModifyDefault (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
 
                 usuarioEN.Nombre = usuario.Nombre;
 
@@ -97,16 +97,10 @@ public void ModifyDefault (UsuarioEN usuario)
                 usuarioEN.Apellidos = usuario.Apellidos;
 
 
-                usuarioEN.Direccion = usuario.Direccion;
-
-
                 usuarioEN.Telefono = usuario.Telefono;
 
 
                 usuarioEN.FNacimiento = usuario.FNacimiento;
-
-
-                usuarioEN.CP = usuario.CP;
 
 
                 usuarioEN.Activo = usuario.Activo;
@@ -137,7 +131,7 @@ public void ModifyDefault (UsuarioEN usuario)
 }
 
 
-public string New_ (UsuarioEN usuario)
+public int New_ (UsuarioEN usuario)
 {
         try
         {
@@ -160,7 +154,7 @@ public string New_ (UsuarioEN usuario)
                 SessionClose ();
         }
 
-        return usuario.Email;
+        return usuario.Id;
 }
 
 public void Modify (UsuarioEN usuario)
@@ -168,7 +162,10 @@ public void Modify (UsuarioEN usuario)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), usuario.Id);
+
+                usuarioEN.Email = usuario.Email;
+
 
                 usuarioEN.NombreUsu = usuario.NombreUsu;
 
@@ -185,16 +182,10 @@ public void Modify (UsuarioEN usuario)
                 usuarioEN.Apellidos = usuario.Apellidos;
 
 
-                usuarioEN.Direccion = usuario.Direccion;
-
-
                 usuarioEN.Telefono = usuario.Telefono;
 
 
                 usuarioEN.FNacimiento = usuario.FNacimiento;
-
-
-                usuarioEN.CP = usuario.CP;
 
 
                 usuarioEN.Activo = usuario.Activo;
@@ -216,13 +207,13 @@ public void Modify (UsuarioEN usuario)
                 SessionClose ();
         }
 }
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), Email);
+                UsuarioEN usuarioEN = (UsuarioEN)session.Load (typeof(UsuarioEN), id);
                 session.Delete (usuarioEN);
                 SessionCommit ();
         }
@@ -273,7 +264,7 @@ public System.Collections.Generic.IList<UsuarioEN> MuestraUsuarios (int first, i
 
 //Sin e: MuestraUsuarioPorOID
 //Con e: UsuarioEN
-public UsuarioEN MuestraUsuarioPorOID (string Email
+public UsuarioEN MuestraUsuarioPorOID (int id
                                        )
 {
         UsuarioEN usuarioEN = null;
@@ -281,7 +272,7 @@ public UsuarioEN MuestraUsuarioPorOID (string Email
         try
         {
                 SessionInitializeTransaction ();
-                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), Email);
+                usuarioEN = (UsuarioEN)session.Get (typeof(UsuarioEN), id);
                 SessionCommit ();
         }
 
@@ -338,7 +329,7 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Usua
 
         return result;
 }
-public void AddFavoritos (string p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
+public void AddFavoritos (int p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
 {
         BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN usuarioEN = null;
         try
@@ -377,7 +368,7 @@ public void AddFavoritos (string p_Usuario_OID, System.Collections.Generic.IList
         }
 }
 
-public void QuitarFavoritos (string p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
+public void QuitarFavoritos (int p_Usuario_OID, System.Collections.Generic.IList<int> p_favoritos_OIDs)
 {
         try
         {

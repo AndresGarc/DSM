@@ -36,7 +36,7 @@ namespace SuperPet.Controllers
 
         // POST: Slider/Edit/5
         [HttpPost]
-        public ActionResult Edit(Slider sli, HttpPostedFileBase file1)
+        public ActionResult Edit(Slider sli, HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
             string fileName = "", path = "";
             // Verify that the user selected a file
@@ -45,95 +45,114 @@ namespace SuperPet.Controllers
                 // extract only the fielname
                 fileName = Path.GetFileName(file1.FileName);
                 // store the file inside ~/App_Data/uploads folder
-                path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                path = Path.Combine(Server.MapPath("~/images/uploads/slider"), fileName);
                 //string pathDef = path.Replace(@"\\", @"\");
                 file1.SaveAs(path);
 
 
                 try
                 {
-                    fileName = "/Images/Slider/" + fileName;
-                    SliderCEN cen = new SliderCEN();
-                    cen.CambiarImagen(sli.Id, 0, fileName);
-                    //cen.New_(art.Descripcion, art.Precio, art.IdCategoria, fileName, art.Nombre);
+                    fileName = "/images/uploads/slider/" + fileName;
+                    //SliderCEN cen = new SliderCEN();
+                    //cen.CambiarImagen(sli.Id, 0, fileName);
 
                     SessionInitialize();
                     SliderCAD sliCAD = new SliderCAD();
                     SliderCEN sliCEN = new SliderCEN(sliCAD);
                     sliCEN.CambiarImagen(sli.Id, 0, fileName);
                     SessionClose();
-
-                    return RedirectToAction("Index");
                 }
                 catch
                 {
                     return View();
                 }
             }
-            return RedirectToAction("Index");
-                 /*
-                 String file = collection[1];// nombre del archivo
-                 String file2 = collection[0];// nombre del archivo
-                 String file3 = collection[3];// nombre del archivo
+
+            if (file2 != null && file2.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file2.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/images/uploads/slider"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file2.SaveAs(path);
 
 
-                 SliderCEN cen = new SliderCEN();
-                 cen.CambiarImagen(id, 1, file);
-                 cen.CambiarImagen(id, 0, file2);
-                 cen.CambiarImagen(id, 2, file3);
-                 return RedirectToAction("Index");
-                 //cen.New_(art.Descripcion, art.Precio, art.IdCategoria, fileName, art.Nombre);
-                 */
-                    /*
-                    foreach (var key in collection.AllKeys)
-                    {
-                        collection[key];
-                    }
+                try
+                {
+                    fileName = "/images/uploads/slider/" + fileName;
+                    //SliderCEN cen = new SliderCEN();
+                    //cen.CambiarImagen(sli.Id, 0, fileName);
 
-                    return RedirectToAction("Index");
-                    */
-                    /*
-                    int i = 0;
-                    foreach (HttpPostedFileBase file in files) {
-
-                        string fileName = "", path = "";
-                        // Verify that the user selected a file
-                        if (file != null && file.ContentLength > 0)
-                        {
-                            // extract only the fielname
-                            fileName = Path.GetFileName(file.FileName);
-                            // store the file inside ~/App_Data/uploads folder
-                            path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
-                            //string pathDef = path.Replace(@"\\", @"\");
-                            file.SaveAs(path);
-
-
-                            try
-                            {
-
-
-                                fileName = "/Images/Uploads/" + fileName;
-                                ProductoCEN cen = new ProductoCEN();
-                                cen.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock,prod.ValoracionMedia,prod.Destacado,prod.Oferta);
-
-
-                                fileName = "/Images/Slider/" + fileName;
-                                SliderCEN cen = new SliderCEN();
-                                cen.CambiarImagen(sli.Id, i, fileName);
-                                //cen.New_(art.Descripcion, art.Precio, art.IdCategoria, fileName, art.Nombre);
-
-                                return RedirectToAction("Index");
-                            }
-                            catch
-                            {
-                                return View();
-                            }
-                        }
-                        ++i;
-                    }
-                    */
-                    //return RedirectToAction("Index");
+                    SessionInitialize();
+                    SliderCAD sliCAD = new SliderCAD();
+                    SliderCEN sliCEN = new SliderCEN(sliCAD);
+                    sliCEN.CambiarImagen(sli.Id, 1, fileName);
+                    SessionClose();
                 }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            if (file3 != null && file3.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file3.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/images/uploads/slider"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file3.SaveAs(path);
+
+
+                try
+                {
+                    fileName = "/images/uploads/slider/" + fileName;
+                    //SliderCEN cen = new SliderCEN();
+                    //cen.CambiarImagen(sli.Id, 0, fileName);
+
+                    SessionInitialize();
+                    SliderCAD sliCAD = new SliderCAD();
+                    SliderCEN sliCEN = new SliderCEN(sliCAD);
+                    sliCEN.CambiarImagen(sli.Id, 2, fileName);
+                    SessionClose();
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+            if (file4 != null && file4.ContentLength > 0)
+            {
+                // extract only the fielname
+                fileName = Path.GetFileName(file4.FileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/images/uploads/slider"), fileName);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file4.SaveAs(path);
+
+
+                try
+                {
+                    fileName = "/images/uploads/slider/" + fileName;
+                    //SliderCEN cen = new SliderCEN();
+                    //cen.CambiarImagen(sli.Id, 0, fileName);
+
+                    SessionInitialize();
+                    SliderCAD sliCAD = new SliderCAD();
+                    SliderCEN sliCEN = new SliderCEN(sliCAD);
+                    sliCEN.CambiarImagen(sli.Id, 3, fileName);
+                    SessionClose();
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
 
     }
 }

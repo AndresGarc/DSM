@@ -25,7 +25,7 @@
 			
 		  			
 						<many-to-one name="Usuario" class="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN" >	
-								<column name="FK_EmailUsuarioBasico_idUsuario"/> 
+								<column name="FK_attribute_idUsuario"/> 
 						</many-to-one>
 											 					
 			

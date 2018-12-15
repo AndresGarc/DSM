@@ -19,7 +19,7 @@ namespace BaseDatosGenNHibernate.CEN.BaseDatos
 {
 public partial class UsuarioBasicoCEN
 {
-public bool Login (string p_UsuarioBasico_OID, string p_pass)
+public bool Login (int p_UsuarioBasico_OID, string p_pass)
 {
         /*PROTECTED REGION ID(BaseDatosGenNHibernate.CEN.BaseDatos_UsuarioBasico_login) ENABLED START*/
         bool result = false;

@@ -34,5 +34,11 @@ CategoriaEN MuestraCategoriaPorOID (int id
 void CrearSupercategoria (int p_Categoria_OID, int p_supercategoria_OID);
 
 System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSubcategorias (int p_categoria, int first, int size);
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSubcategoriasByNombre (string p_nombre);
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSupercategoriasByNombre (string p_nombre);
 }
 }

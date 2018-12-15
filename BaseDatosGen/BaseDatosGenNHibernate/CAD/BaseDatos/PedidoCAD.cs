@@ -129,14 +129,14 @@ public int New_ (PedidoEN pedido)
                 SessionInitializeTransaction ();
                 if (pedido.UsuarioPedido != null) {
                         // Argumento OID y no colección.
-                        pedido.UsuarioPedido = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), pedido.UsuarioPedido.Email);
+                        pedido.UsuarioPedido = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), pedido.UsuarioPedido.Id);
 
                         pedido.UsuarioPedido.PedidoRealizado
                         .Add (pedido);
                 }
                 if (pedido.UsuarioCarrito != null) {
                         // Argumento OID y no colección.
-                        pedido.UsuarioCarrito = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), pedido.UsuarioCarrito.Email);
+                        pedido.UsuarioCarrito = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), pedido.UsuarioCarrito.Id);
 
                         pedido.UsuarioCarrito.CarritoActual
                                 = pedido;
@@ -338,13 +338,13 @@ public void AddMetodoPago (int p_Pedido_OID, int p_metodoPago_OID)
         }
 }
 
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (int p_usuario, int first, int size)
 {
         System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM PedidoEN self where FROM PedidoEN ped WHERE ped.UsuarioPedido.Email = :p_usuario";
+                //String sql = @"FROM PedidoEN self where FROM PedidoEN ped WHERE ped.UsuarioPedido.Id = :p_usuario";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("PedidoENgetAllPedidosByUsuarioHQL");
                 query.SetParameter ("p_usuario", p_usuario);

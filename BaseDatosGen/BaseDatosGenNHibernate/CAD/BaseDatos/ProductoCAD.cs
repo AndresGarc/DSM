@@ -304,7 +304,7 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM ProductoEN self where FROM ProductoEN pro WHERE pro.Nombre LIKE '%'+:p_nombre +'%'";
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN as pro WHERE pro.Nombre LIKE '%'+:p_nombre +'%'";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosByNombreHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -516,7 +516,7 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
 
         return result;
 }
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (int p_usuario, int first, int size)
 {
         System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
         try
@@ -553,7 +553,7 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
 
         return result;
 }
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (int p_usuario, int first, int size)
 {
         System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
         try
@@ -570,6 +570,158 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
                 else{
                         query.SetFirstResult (first);
                 }
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public void CambiarCategoria (int p_Producto_OID, int p_categoria_OID)
+{
+        BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN productoEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                productoEN = (ProductoEN)session.Load (typeof(ProductoEN), p_Producto_OID);
+                productoEN.Categoria = (BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN), p_categoria_OID);
+
+                productoEN.Categoria.Producto.Add (productoEN);
+
+
+
+                session.Update (productoEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByNombreStock (string p_nombre)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN pro WHERE pro.Nombre LIKE '%'+:p_nombre +'%' and pro.Stock = 0";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosByNombreStockHQL");
+                query.SetParameter ("p_nombre", p_nombre);
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByPrecios (double? precio1, double ? precio2)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN as prod WHERE prod.Precio BETWEEN :precio1 AND :precio2";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosByPreciosHQL");
+                query.SetParameter ("precio1", precio1);
+                query.SetParameter ("precio2", precio2);
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByCategoria (string nombre)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN as pro WHERE pro.Categoria.Nombre LIKE '%' + :nombre + '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosByCategoriaHQL");
+                query.SetParameter ("nombre", nombre);
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosBySuperCategoria (string nombre)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN as pro WHERE pro.Categoria.Supercategoria.Nombre LIKE '%' + :nombre + '%'";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosBySuperCategoriaHQL");
+                query.SetParameter ("nombre", nombre);
 
                 result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
                 SessionCommit ();

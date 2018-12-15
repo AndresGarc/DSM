@@ -9,7 +9,7 @@
 <joined-subclass name="AdministradorEN" extends="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioBasicoEN" table="Administrador"> 
 	<key>
     	
-				<column name="EmailUsuarioBasico"/>
+				<column name="attribute"/>
 		
     	
    	</key>

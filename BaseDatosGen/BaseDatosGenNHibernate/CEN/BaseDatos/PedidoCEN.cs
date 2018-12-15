@@ -39,7 +39,7 @@ public IPedidoCAD get_IPedidoCAD ()
         return this._IPedidoCAD;
 }
 
-public int New_ (Nullable<DateTime> p_Fecha, BaseDatosGenNHibernate.Enumerated.BaseDatos.EstadoPedidoEnum p_Estado, string p_usuarioPedido, string p_usuarioCarrito)
+public int New_ (Nullable<DateTime> p_Fecha, BaseDatosGenNHibernate.Enumerated.BaseDatos.EstadoPedidoEnum p_Estado, int p_usuarioPedido, int p_usuarioCarrito)
 {
         PedidoEN pedidoEN = null;
         int oid;
@@ -51,19 +51,19 @@ public int New_ (Nullable<DateTime> p_Fecha, BaseDatosGenNHibernate.Enumerated.B
         pedidoEN.Estado = p_Estado;
 
 
-        if (p_usuarioPedido != null) {
+        if (p_usuarioPedido != -1) {
                 // El argumento p_usuarioPedido -> Property usuarioPedido es oid = false
                 // Lista de oids id
                 pedidoEN.UsuarioPedido = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                pedidoEN.UsuarioPedido.Email = p_usuarioPedido;
+                pedidoEN.UsuarioPedido.Id = p_usuarioPedido;
         }
 
 
-        if (p_usuarioCarrito != null) {
+        if (p_usuarioCarrito != -1) {
                 // El argumento p_usuarioCarrito -> Property usuarioCarrito es oid = false
                 // Lista de oids id
                 pedidoEN.UsuarioCarrito = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                pedidoEN.UsuarioCarrito.Email = p_usuarioCarrito;
+                pedidoEN.UsuarioCarrito.Id = p_usuarioCarrito;
         }
 
         //Call to PedidoCAD
@@ -120,7 +120,7 @@ public void AddMetodoPago (int p_Pedido_OID, int p_metodoPago_OID)
 
         _IPedidoCAD.AddMetodoPago (p_Pedido_OID, p_metodoPago_OID);
 }
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (int p_usuario, int first, int size)
 {
         return _IPedidoCAD.GetAllPedidosByUsuario (p_usuario, first, size);
 }

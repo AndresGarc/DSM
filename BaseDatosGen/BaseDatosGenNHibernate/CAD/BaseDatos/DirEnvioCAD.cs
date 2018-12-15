@@ -130,7 +130,7 @@ public int New_ (DirEnvioEN dirEnvio)
                 SessionInitializeTransaction ();
                 if (dirEnvio.Usuario != null) {
                         // Argumento OID y no colección.
-                        dirEnvio.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), dirEnvio.Usuario.Email);
+                        dirEnvio.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), dirEnvio.Usuario.Id);
 
                         dirEnvio.Usuario.DirEnvio
                         .Add (dirEnvio);

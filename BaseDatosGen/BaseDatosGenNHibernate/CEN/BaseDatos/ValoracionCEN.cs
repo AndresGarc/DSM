@@ -39,7 +39,7 @@ public IValoracionCAD get_IValoracionCAD ()
         return this._IValoracionCAD;
 }
 
-public int New_ (double p_Valor, string p_usuario, int p_producto)
+public int New_ (double p_Valor, int p_usuario, int p_producto)
 {
         ValoracionEN valoracionEN = null;
         int oid;
@@ -49,11 +49,11 @@ public int New_ (double p_Valor, string p_usuario, int p_producto)
         valoracionEN.Valor = p_Valor;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
                 // Lista de oids id
                 valoracionEN.Usuario = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                valoracionEN.Usuario.Email = p_usuario;
+                valoracionEN.Usuario.Id = p_usuario;
         }
 
 

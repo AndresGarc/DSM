@@ -39,7 +39,7 @@ public IComentarioCAD get_IComentarioCAD ()
         return this._IComentarioCAD;
 }
 
-public int New_ (string p_Texto, Nullable<DateTime> p_Fecha, string p_usuario, int p_producto)
+public int New_ (string p_Texto, Nullable<DateTime> p_Fecha, int p_usuario, int p_producto)
 {
         ComentarioEN comentarioEN = null;
         int oid;
@@ -51,11 +51,11 @@ public int New_ (string p_Texto, Nullable<DateTime> p_Fecha, string p_usuario, i
         comentarioEN.Fecha = p_Fecha;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
                 // Lista de oids id
                 comentarioEN.Usuario = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                comentarioEN.Usuario.Email = p_usuario;
+                comentarioEN.Usuario.Id = p_usuario;
         }
 
 

@@ -19,7 +19,7 @@ namespace BaseDatosGenNHibernate.CEN.BaseDatos
 {
 public partial class UsuarioCEN
 {
-public void CambiarEstado (string p_oid)
+public void CambiarEstado (int p_oid)
 {
         /*PROTECTED REGION ID(BaseDatosGenNHibernate.CEN.BaseDatos_Usuario_cambiarEstado) ENABLED START*/
 

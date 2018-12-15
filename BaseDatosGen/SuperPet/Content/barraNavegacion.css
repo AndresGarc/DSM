@@ -10,8 +10,8 @@
     font-size: 1.5em;
 }
 
-.bg_verde{
-    background-color: #39ff18;
+.bg_verde {
+    background-color: #269a14;
 }
 .blanco{
     background-color: whitesmoke;
@@ -34,7 +34,10 @@
 }
 
 .nav-item:hover {
-    background-color: #269a14;
+    background-color: #39ff18;
+}
+.nav-item a {
+    color: white;
 }
 nav-item {
     color: black !important;
@@ -48,3 +51,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #269a14;
 }
 
+.idioma{
+    float:right;
+}
+#logo{
+    display:inline-block;
+    width:40%;
+}
+#barra_navegacion a:hover {
+    color: #269a14;
+    text-shadow: 0 0 15px #39ff18;
+}
+#barra_navegacion .nav-item a {
+    color: white;
+    text-shadow: 0 0 2px #39ff18;
+}

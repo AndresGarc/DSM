@@ -36,6 +36,6 @@ void AddDirEnvio (int p_Pedido_OID, int p_dirEnvio_OID);
 
 void AddMetodoPago (int p_Pedido_OID, int p_metodoPago_OID);
 
-System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (string p_usuario, int first, int size);
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN> GetAllPedidosByUsuario (int p_usuario, int first, int size);
 }
 }

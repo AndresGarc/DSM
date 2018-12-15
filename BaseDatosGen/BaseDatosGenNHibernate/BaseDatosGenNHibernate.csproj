@@ -165,6 +165,8 @@
 			
 			
 			
+			
+			
 	<Compile Include="EN\BaseDatos\ProductoEN.cs" />
 	<Compile Include="CEN\BaseDatos\ProductoCEN.cs" />
 	<Compile Include="CAD\BaseDatos\IProductoCAD.cs" />
@@ -187,6 +189,11 @@
 			<Compile Include="CEN\BaseDatos\ProductoCEN_CambiarDestacado.cs" />
 			
 			<Compile Include="CEN\BaseDatos\ProductoCEN_CambiarOferta.cs" />
+			
+			
+			
+			
+			
 			
 			
 			

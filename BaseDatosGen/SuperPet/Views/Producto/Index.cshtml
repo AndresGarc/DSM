@@ -6,82 +6,112 @@
 }
 
 <h1>Productos</h1>
-
-<button onclick="location.href='@Url.Action("Create")'" type="button" class="btn btn-success  btn-block">Crear Producto</button>
-<!--
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-    -->
-<div class="table-responsive">
-<table class="table table-hover table-bordered">
-    <tr class="bg-success">
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Destacado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Oferta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreCategoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreSupercategoria)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Destacado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Oferta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreCategoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreSupercategoria)
-        </td>
-        <td>
-            @Html.ActionLink("EDITAR", "Edit", new { id = item.id }) |
-            @Html.ActionLink("DETALLES", "Details", new { id = item.id }) |
-            @Html.ActionLink("BORRAR", "Delete", new { id = item.id })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-md-11">
+        <div class="form-inline">
+            <input type="text" name="prod" class="form-control"/>
+            <button type="submit" class="btn btn-default btn-sm" name="btn" value="0">
+                <span class="glyphicon glyphicon-search"></span> Buscar por Nombre
+            </button>
+        </div>
+        <div class="form-inline">
+            <span>Entre</span>
+            <input type="number" name="precio1" class="form-control"/>
+            <span> y </span>
+            <input type="number" name="precio2" class="form-control"/>
+            <button type="submit" class="btn btn-default btn-sm" name="btn" value="1">
+                <span class="glyphicon glyphicon-search"></span> Buscar por Precio
+            </button>
+        </div>
+        <div class="form-inline">
+            <input type="text" name="categ" class="form-control"/>
+            <button type="submit" class="btn btn-default btn-sm" name="btn" value="2">
+                <span class="glyphicon glyphicon-search"></span> Buscar por Categoría
+            </button>
+        </div>
+        <div class="form-inline">
+            <input type="text" name="supcateg" class="form-control"/>
+            <button type="submit" class="btn btn-default btn-sm" name="btn" value="3">
+                <span class="glyphicon glyphicon-search"></span> Buscar por Supercategoría
+            </button>
+        </div>
+    </div>
+    @Html.ActionLink(" ", "Index", "Producto", FormMethod.Get, new { @class = "col-md-1 btn btn-default btn-sm glyphicon glyphicon-refresh" })
 }
+<button onclick="location.href='@Url.Action("Create")'" type="button" class="btn btn-success btn-block">Crear Producto</button>
+<!--<p>@Html.ActionLink("Create New", "Create")</p>-->
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <tr class="bg-success">
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destacado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oferta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreSupercategoria)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen)" alt="Imagen del producto no disponible" height="100px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destacado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oferta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreSupercategoria)
+                </td>
+                <td>
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("DETALLES", "Details", new { id = item.id }) |
+                    @Html.ActionLink("BORRAR", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
 </div>

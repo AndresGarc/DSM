@@ -6,9 +6,15 @@
 		    
 			
 				<class name="UsuarioBasicoEN" table="UsuarioBasico"> 
-						<id name="Email" column="EmailUsuarioBasico"/> 
+				  	
+						<id name="Id" column="attribute" type="integer"> 
+							<generator class="hilo"/>
+						</id>
 			
 					
+					<property name="Email" type="string"> 
+						<column name="EmailUsuarioBasico"  unique="true" not-null="true"/>
+					</property>
 					<property name="NombreUsu" type="string"> 
 						<column name="NombreUsu"  not-null="true"/>
 					</property>
@@ -23,6 +29,8 @@
 			
 			
 			
+			
+					
 					
 					
 					

@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h2>Slider</h2>
+
 <div class="table-responsive">
     <table class="table table-hover table-bordered">
         <tr class="bg-success">
@@ -20,26 +21,30 @@
             <th>
                 @Html.DisplayNameFor(model => model.Imagen4)
             </th>
+            <th>
+
+            </th>
         </tr>
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagen1)
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagen2)
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagen3)
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Imagen4)
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
                 </td>
+
                 <td>
                     @Html.ActionLink("EDITAR", "Edit", new { id = item.Id })
                 </td>
             </tr>
         }
     </table>
-    </div>
+</div>

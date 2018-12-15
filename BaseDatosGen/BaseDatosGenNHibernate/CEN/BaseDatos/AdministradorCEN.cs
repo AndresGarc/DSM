@@ -39,10 +39,10 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
+public int New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
 {
         AdministradorEN administradorEN = null;
-        string oid;
+        int oid;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
@@ -60,13 +60,14 @@ public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool 
         return oid;
 }
 
-public void Modify (string p_Administrador_OID, string p_NombreUsu, String p_Password, bool p_logged)
+public void Modify (int p_Administrador_OID, string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
 {
         AdministradorEN administradorEN = null;
 
         //Initialized AdministradorEN
         administradorEN = new AdministradorEN ();
-        administradorEN.Email = p_Administrador_OID;
+        administradorEN.Id = p_Administrador_OID;
+        administradorEN.Email = p_Email;
         administradorEN.NombreUsu = p_NombreUsu;
         administradorEN.Password = Utils.Util.GetEncondeMD5 (p_Password);
         administradorEN.Logged = p_logged;
@@ -75,10 +76,10 @@ public void Modify (string p_Administrador_OID, string p_NombreUsu, String p_Pas
         _IAdministradorCAD.Modify (administradorEN);
 }
 
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
-        _IAdministradorCAD.Destroy (Email);
+        _IAdministradorCAD.Destroy (id);
 }
 }
 }

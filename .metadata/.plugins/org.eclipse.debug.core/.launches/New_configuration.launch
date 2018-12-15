@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="es.ua.dlsi.ooh.core.internal.launching.runXtextGeneration">
+<booleanAttribute key="java_debug" value="false"/>
+<stringAttribute key="modelPathConceptualview" value="models/default.domainModel"/>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="BaseDatos"/>
+<booleanAttribute key="org.eclipse.jdt.launching.STOP_IN_MAIN" value="false"/>
+<stringAttribute key="startWorkflow" value="/BaseDatos/templates/workflow/generator.mwe"/>
+<booleanAttribute key="targetProjectCreation" value="true"/>
+</launchConfiguration>

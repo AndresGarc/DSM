@@ -9,7 +9,7 @@
 <joined-subclass name="UsuarioEN" extends="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioBasicoEN" table="Usuario"> 
 	<key>
     	
-				<column name="EmailUsuarioBasico"/>
+				<column name="attribute"/>
 		
     	
    	</key>
@@ -22,23 +22,15 @@
 					<property name="Apellidos" type="string"> 
 						<column name="Apellidos"  not-null="true"/>
 					</property>
-					<property name="Direccion" type="string"> 
-						<column name="Direccion"  not-null="true"/>
-					</property>
 					<property name="Telefono" type="integer"> 
 						<column name="Telefono"  not-null="true"/>
 					</property>
 					<property name="FNacimiento" type="timestamp"> 
 						<column name="FNacimiento"  not-null="true"/>
 					</property>
-					<property name="CP" type="integer"> 
-						<column name="CP"  not-null="true"/>
-					</property>
 					<property name="Activo" type="boolean"> 
 						<column name="Activo"  not-null="true"/>
 					</property>
-			
-			
 			
 			
 			
@@ -51,7 +43,7 @@
 							<key>
 							
 								
-								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+								<column name="FK_attribute_idUsuario"/>
 					      	</key>
 							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ComentarioEN"/>
 					    </bag>
@@ -62,7 +54,7 @@
 							<key>
 							
 								
-								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+								<column name="FK_attribute_idUsuario"/>
 					      	</key>
 							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ValoracionEN"/>
 					    </bag>
@@ -73,7 +65,7 @@
 							<key>
 							
 								
-								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+								<column name="FK_attribute_idUsuario"/>
 					      	</key>
 							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.PedidoEN"/>
 					    </bag>
@@ -91,7 +83,7 @@
 						<bag name="Favoritos" table="[producto_0_usuario_0]" inverse="true" >
 							<key>
 								
-									<column name="FK_EmailUsuarioBasico_idUsuario_0"/> 
+									<column name="FK_attribute_idUsuario_0"/> 
 							</key>
       						<many-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN">
 									<column name="FK_idProducto_idFavoritos"/> 
@@ -103,7 +95,7 @@
 							<key>
 							
 								
-								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+								<column name="FK_attribute_idUsuario"/>
 					      	</key>
 							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.DirEnvioEN"/>
 					    </bag>
@@ -114,12 +106,10 @@
 							<key>
 							
 								
-								<column name="FK_EmailUsuarioBasico_idUsuario"/>
+								<column name="FK_attribute_idUsuario"/>
 					      	</key>
 							<one-to-many class="BaseDatosGenNHibernate.EN.BaseDatos.MetodoPagoEN"/>
 					    </bag>
-					
-					
 					
 					
 					

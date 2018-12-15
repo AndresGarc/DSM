@@ -39,10 +39,10 @@ public IUsuarioBasicoCAD get_IUsuarioBasicoCAD ()
         return this._IUsuarioBasicoCAD;
 }
 
-public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
+public int New_ (string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
 {
         UsuarioBasicoEN usuarioBasicoEN = null;
-        string oid;
+        int oid;
 
         //Initialized UsuarioBasicoEN
         usuarioBasicoEN = new UsuarioBasicoEN ();
@@ -60,13 +60,14 @@ public string New_ (string p_Email, string p_NombreUsu, String p_Password, bool 
         return oid;
 }
 
-public void Modify (string p_UsuarioBasico_OID, string p_NombreUsu, String p_Password, bool p_logged)
+public void Modify (int p_UsuarioBasico_OID, string p_Email, string p_NombreUsu, String p_Password, bool p_logged)
 {
         UsuarioBasicoEN usuarioBasicoEN = null;
 
         //Initialized UsuarioBasicoEN
         usuarioBasicoEN = new UsuarioBasicoEN ();
-        usuarioBasicoEN.Email = p_UsuarioBasico_OID;
+        usuarioBasicoEN.Id = p_UsuarioBasico_OID;
+        usuarioBasicoEN.Email = p_Email;
         usuarioBasicoEN.NombreUsu = p_NombreUsu;
         usuarioBasicoEN.Password = Utils.Util.GetEncondeMD5 (p_Password);
         usuarioBasicoEN.Logged = p_logged;
@@ -75,10 +76,10 @@ public void Modify (string p_UsuarioBasico_OID, string p_NombreUsu, String p_Pas
         _IUsuarioBasicoCAD.Modify (usuarioBasicoEN);
 }
 
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
-        _IUsuarioBasicoCAD.Destroy (Email);
+        _IUsuarioBasicoCAD.Destroy (id);
 }
 }
 }

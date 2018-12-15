@@ -19,7 +19,7 @@ namespace BaseDatosGenNHibernate.CEN.BaseDatos
 {
 public partial class UsuarioBasicoCEN
 {
-public void Logout (string p_oid)
+public void Logout (int p_oid)
 {
         /*PROTECTED REGION ID(BaseDatosGenNHibernate.CEN.BaseDatos_UsuarioBasico_logout) ENABLED START*/
 

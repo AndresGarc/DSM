@@ -68,5 +68,7 @@
 		  
 		  <query name="CategoriaENReadAllHQL">from CategoriaEN</query>
 		  <query name="CategoriaENgetSubcategoriasHQL"><![CDATA[ SELECT subCat FROM CategoriaEN supCat INNER JOIN supCat.Subcategoria as subCat WHERE supCat .Id = :p_categoria]]></query>
+		  <query name="CategoriaENgetSubcategoriasByNombreHQL"><![CDATA[ SELECT subCat FROM CategoriaEN supCat INNER JOIN supCat.Subcategoria as subCat WHERE supCat.Nombre LIKE '%' + :p_nombre +'%']]></query>
+		  <query name="CategoriaENgetSupercategoriasByNombreHQL"><![CDATA[FROM CategoriaEN as subCat WHERE subCat.Supercategoria.Nombre LIKE '%' + :p_nombre + '%']]></query>
 		</hibernate-mapping>
 	

@@ -32,6 +32,45 @@ namespace SuperPet.Controllers
             return View(listProds);
         }
 
+
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            try
+            {
+                IEnumerable<Producto> listprods = null;
+                switch(Convert.ToInt16(form["btn"]))
+                {
+                    case 0:
+                        SessionInitialize();
+                        listprods = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosByNombre(Convert.ToString(form["prod"]), 0, -1));
+                        SessionClose();
+                        break;
+                    case 1:
+                        SessionInitialize();
+                        listprods = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosByPrecios(Convert.ToDouble(form["precio1"]), Convert.ToDouble(form["precio2"])));
+                        SessionClose();
+                        break;
+                    case 2:
+                        SessionInitialize();
+                        listprods = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosByCategoria(Convert.ToString(form["categ"])));
+                        SessionClose();
+                        break;
+                    case 3:
+                        SessionInitialize();
+                        listprods = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosBySuperCategoria(Convert.ToString(form["supcateg"])));
+                        SessionClose();
+                        break;
+                }
+
+                return View(listprods);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: Producto/Details/5
         public ActionResult Details(int id)
         {
@@ -46,9 +85,9 @@ namespace SuperPet.Controllers
         // GET: Producto/Create
         public ActionResult Create(/*int id*/)//ahi iria el id de la categoria del articulo que queremos crear
         {
-            int id = 32769;
+            //int id = 65537;
             Producto prod = new Producto();
-            prod.IdCategoria = id;
+            //prod.IdCategoria = id;
             return View(prod);
         }
 
@@ -84,9 +123,81 @@ namespace SuperPet.Controllers
             try
             {
                 fileName = "/Images/Uploads/" + fileName;
-                ProductoCEN cen = new ProductoCEN();
-                cen.New_(prod.Nombre, fileName/*prod.Imagen*/, prod.Precio, prod.Stock, prod.IdCategoria, prod.ValoracionMedia,prod.Destacado,prod.Oferta);
 
+
+                CategoriaCAD catCad = new CategoriaCAD();
+                CategoriaCEN catCen = new CategoriaCEN(catCad);
+
+                bool b = true;
+                int idcat = 0;
+
+
+                IList<CategoriaEN> listCatsEN2 = catCen.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listcon = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN2)
+                {
+
+                    if (cosaCats.Nombre == prod.NombreCategoria)
+                    {
+                        if (cosaCats.Supercategoria != null)
+                        {
+                            if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                            {
+                                b = false;
+                                idcat = cosaCats.Id;
+                            }
+                        }
+                    }
+
+                }
+
+
+                if (b == true)
+                {
+                    idcat = catCen.New_(prod.NombreCategoria);
+                }
+
+
+
+                bool a = true;
+                int idSupCat = 0;
+
+                CategoriaCAD catCad2 = new CategoriaCAD();
+                CategoriaCEN catCen2 = new CategoriaCEN(catCad2);
+                IList<CategoriaEN> listCatsEN = catCen2.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN)
+                {
+                    if (cosaCats.Supercategoria != null)
+                    {
+                        if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                        {
+                            a = false;
+                            idSupCat = cosaCats.Supercategoria.Id;
+                        }
+                    }
+                }
+
+
+                if (a == true)
+                {
+                    idSupCat = catCen.New_(prod.NombreSupercategoria);
+                }
+
+
+                //int idSupCat=catCen.New_(hijo.NombreSupcat);
+                catCen.CrearSupercategoria(idcat, idSupCat);
+
+                ProductoCEN cen = new ProductoCEN();
+               int idquenecesito= cen.New_(prod.Nombre, fileName/*prod.Imagen*/, prod.Precio, prod.Stock, idcat, prod.ValoracionMedia,prod.Destacado,prod.Oferta);
+
+
+                
+
+
+                ProductoDescripcionCEN cend = new ProductoDescripcionCEN();
+                //cen.CambiarCategoria(idquenecesito, idcat);
+                cend.New_(prod.Descripcion, BaseDatosGenNHibernate.Enumerated.BaseDatos.IdiomaEnum.Castellano, idquenecesito);
                 // return RedirectToAction("PorCategoria", new { id = prod.IdCategoria });
                 return RedirectToAction("Index");
             }
@@ -125,9 +236,80 @@ namespace SuperPet.Controllers
             try
             {
                 fileName = "/Images/Uploads/" + fileName;
-                ProductoCEN cen = new ProductoCEN();
-                cen.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock,prod.ValoracionMedia,prod.Destacado,prod.Oferta);
+                ProductoCEN cenf = new ProductoCEN();
 
+
+                CategoriaCAD catCad = new CategoriaCAD();
+                CategoriaCEN catCen = new CategoriaCEN(catCad);
+
+                bool b = true;
+                int idcat = 0;
+
+                
+                IList<CategoriaEN> listCatsEN2 = catCen.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listcon = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN2)
+                {
+                    
+                        if (cosaCats.Nombre == prod.NombreCategoria)
+                        {
+                        if (cosaCats.Supercategoria != null)
+                        {
+                            if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                            {
+                                b = false;
+                                idcat = cosaCats.Id;
+                            }
+                        }
+                        }
+                    
+                }
+
+
+                if (b == true)
+                {
+                     idcat = catCen.New_(prod.NombreCategoria);
+                }
+
+
+                
+                bool a = true;
+                int idSupCat = 0;
+
+                CategoriaCAD catCad2 = new CategoriaCAD();
+                CategoriaCEN catCen2 = new CategoriaCEN(catCad2);
+                IList<CategoriaEN> listCatsEN = catCen2.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN)
+                {
+                    if (cosaCats.Supercategoria != null)
+                    {
+                        if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                        {
+                            a = false;
+                            idSupCat = cosaCats.Supercategoria.Id;
+                        }
+                    }
+                }
+
+
+                if (a == true)
+                {
+                    idSupCat = catCen.New_(prod.NombreSupercategoria);
+                }
+
+
+                //int idSupCat=catCen.New_(hijo.NombreSupcat);
+                catCen.CrearSupercategoria(idcat, idSupCat);
+
+                //prod.IdCategoria =idcat;
+                
+                cenf.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock,prod.ValoracionMedia,prod.Destacado,prod.Oferta);
+                cenf.CambiarCategoria(prod.id, idcat);
+                ProductoDescripcionCEN cend = new ProductoDescripcionCEN();
+                
+                cend.New_(prod.Descripcion, BaseDatosGenNHibernate.Enumerated.BaseDatos.IdiomaEnum.Castellano, prod.id);
+                
                 return RedirectToAction("Index");
             }
             catch

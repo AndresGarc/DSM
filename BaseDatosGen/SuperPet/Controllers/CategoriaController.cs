@@ -19,9 +19,34 @@ namespace SuperPet.Controllers
             CategoriaCAD catCad = new CategoriaCAD(session);
             CategoriaCEN catCen = new CategoriaCEN(catCad);
             IList<CategoriaEN> listCatsEN = catCen.MuestraCategorias(0, -1);
-            IEnumerable<Categoria> listCats = new AssemblerCategoria().ConvertListENToModel(listCatsEN).ToList();
+            IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+            foreach (CategoriaEN cosaCats in listCatsEN)
+            {
+                if (cosaCats.Supercategoria != null)
+                {
+                    listconSup.Add(cosaCats);
+                }
+            }
+            IEnumerable<Categoria> listCats = new AssemblerCategoria().ConvertListENToModel(listconSup).ToList();
             SessionClose();
             return View(listCats);
+        }
+
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            try
+            {
+                SessionInitialize();
+                IEnumerable<Categoria> cats = new AssemblerCategoria().ConvertListENToModel(new CategoriaCEN(new CategoriaCAD(session)).GetSubcategoriasByNombre(Convert.ToString(form["supcateg"])));
+                SessionClose();
+
+                return View(cats);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Categoria/Details/5 -> ver los detalles de las categorias
@@ -68,7 +93,7 @@ namespace SuperPet.Controllers
         {
             Categoria cathij = new Categoria();
             Categoria catpad = new Categoria();
-            return View(cathij); //PASO POR PARAMETRO A LA VISTA CREATESUB ESE OBJETO CATEGORIA 
+            return View(cathij.NombreCat,catpad.NombreCat); //PASO POR PARAMETRO A LA VISTA CREATESUB ESE OBJETO CATEGORIA 
         }
 
         // POST: Categoria/CreateSup -> no funca
@@ -79,9 +104,39 @@ namespace SuperPet.Controllers
             {
                 // TODO: Add insert logic here
                 SessionInitialize();
+
                 CategoriaCAD catCad = new CategoriaCAD();
                 CategoriaCEN catCen = new CategoriaCEN(catCad);
-                catCen.CrearSupercategoria(hijo.id, padre.id);
+                int idcat=catCen.New_(hijo.NombreCat);
+                bool a = true;
+                int idSupCat=0;
+
+                CategoriaCAD catCad2 = new CategoriaCAD();
+                CategoriaCEN catCen2 = new CategoriaCEN(catCad2);
+                IList<CategoriaEN> listCatsEN = catCen2.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN)
+                {
+                    if (cosaCats.Supercategoria != null)
+                    {
+                        if (cosaCats.Supercategoria.Nombre== hijo.NombreSupcat) {
+                            a = false;
+                            idSupCat = cosaCats.Supercategoria.Id;
+                        }
+                    }
+                }
+
+
+                if (a == true)
+                {
+                    idSupCat = catCen.New_(hijo.NombreSupcat);
+                }
+
+
+                //int idSupCat=catCen.New_(hijo.NombreSupcat);
+                catCen.CrearSupercategoria(idcat, idSupCat);
+
+                
                 /*
                 IList<int> subcas = new List<int>();
                 int id_sub = hijosEN.Id;
@@ -121,12 +176,44 @@ namespace SuperPet.Controllers
                 CategoriaCAD catCAD = new CategoriaCAD();
                 CategoriaCEN catCEN = new CategoriaCEN(catCAD);
                 catCEN.Modify(cat.id, cat.NombreCat);
-                int idsup = cat.idSuperCategoria;
-                //PRUEBA MODIFICAR LA CATEGORIA TAMBIEN
-               /* if (cat.NombreCat != null)
+
+
+                bool a = true;
+                int idSupCat = 0;
+
+                CategoriaCAD catCad2 = new CategoriaCAD();
+                CategoriaCEN catCen2 = new CategoriaCEN(catCad2);
+                IList<CategoriaEN> listCatsEN = catCen2.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN)
                 {
-                    catCEN.CrearSupercategoria(cat.id,idsup);
-                }*/
+                    if (cosaCats.Supercategoria != null)
+                    {
+                        if (cosaCats.Supercategoria.Nombre == cat.NombreSupcat)
+                        {
+                            a = false;
+                            idSupCat = cosaCats.Supercategoria.Id;
+                        }
+                    }
+                }
+
+
+                if (a == true)
+                {
+                    idSupCat = catCEN.New_(cat.NombreSupcat);
+                }
+
+
+                //int idSupCat=catCen.New_(hijo.NombreSupcat);
+                catCEN.CrearSupercategoria(cat.id, idSupCat);
+
+
+                //int idsup = cat.idSuperCategoria;
+                //PRUEBA MODIFICAR LA CATEGORIA TAMBIEN
+                /* if (cat.NombreCat != null)
+                 {
+                     catCEN.CrearSupercategoria(cat.id,idsup);
+                 }*/
                 SessionClose();
 
                 return RedirectToAction("Index");

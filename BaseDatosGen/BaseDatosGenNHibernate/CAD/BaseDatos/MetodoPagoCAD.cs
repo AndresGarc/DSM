@@ -121,7 +121,7 @@ public int New_ (MetodoPagoEN metodoPago)
                 SessionInitializeTransaction ();
                 if (metodoPago.Usuario != null) {
                         // Argumento OID y no colección.
-                        metodoPago.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), metodoPago.Usuario.Email);
+                        metodoPago.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), metodoPago.Usuario.Id);
 
                         metodoPago.Usuario.MetodoPago
                         .Add (metodoPago);

@@ -121,7 +121,7 @@ public int New_ (ValoracionEN valoracion)
                 SessionInitializeTransaction ();
                 if (valoracion.Usuario != null) {
                         // Argumento OID y no colección.
-                        valoracion.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), valoracion.Usuario.Email);
+                        valoracion.Usuario = (BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN)session.Load (typeof(BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN), valoracion.Usuario.Id);
 
                         valoracion.Usuario.Valoracion
                         .Add (valoracion);

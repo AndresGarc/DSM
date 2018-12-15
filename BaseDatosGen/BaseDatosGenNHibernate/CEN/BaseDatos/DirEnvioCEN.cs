@@ -39,7 +39,7 @@ public IDirEnvioCAD get_IDirEnvioCAD ()
         return this._IDirEnvioCAD;
 }
 
-public int New_ (string p_Calle, int p_CP, string p_Localidad, string p_Provincia, string p_usuario)
+public int New_ (string p_Calle, int p_CP, string p_Localidad, string p_Provincia, int p_usuario)
 {
         DirEnvioEN dirEnvioEN = null;
         int oid;
@@ -55,11 +55,11 @@ public int New_ (string p_Calle, int p_CP, string p_Localidad, string p_Provinci
         dirEnvioEN.Provincia = p_Provincia;
 
 
-        if (p_usuario != null) {
+        if (p_usuario != -1) {
                 // El argumento p_usuario -> Property usuario es oid = false
                 // Lista de oids id
                 dirEnvioEN.Usuario = new BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN ();
-                dirEnvioEN.Usuario.Email = p_usuario;
+                dirEnvioEN.Usuario.Id = p_usuario;
         }
 
         //Call to DirEnvioCAD

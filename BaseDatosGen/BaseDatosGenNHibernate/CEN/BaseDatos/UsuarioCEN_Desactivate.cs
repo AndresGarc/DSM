@@ -19,7 +19,7 @@ namespace BaseDatosGenNHibernate.CEN.BaseDatos
 {
 public partial class UsuarioCEN
 {
-public void Desactivate (string p_oid)
+public void Desactivate (int p_oid)
 {
         /*PROTECTED REGION ID(BaseDatosGenNHibernate.CEN.BaseDatos_Usuario_desactivate) ENABLED START*/
 

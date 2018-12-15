@@ -25,7 +25,7 @@
 			
 		  			
 						<many-to-one name="UsuarioPedido" class="BaseDatosGenNHibernate.EN.BaseDatos.UsuarioEN" >	
-								<column name="FK_EmailUsuarioBasico_idUsuario"/> 
+								<column name="FK_attribute_idUsuario"/> 
 						</many-to-one>
 											 					
 			
@@ -83,6 +83,6 @@
 		 </class>	
 		  
 		  <query name="PedidoENReadAllHQL">from PedidoEN</query>
-		  <query name="PedidoENgetAllPedidosByUsuarioHQL"><![CDATA[FROM PedidoEN ped WHERE ped.UsuarioPedido.Email = :p_usuario]]></query>
+		  <query name="PedidoENgetAllPedidosByUsuarioHQL"><![CDATA[FROM PedidoEN ped WHERE ped.UsuarioPedido.Id = :p_usuario]]></query>
 		</hibernate-mapping>
 	

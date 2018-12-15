@@ -29,7 +29,7 @@ public AdministradorCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public AdministradorEN ReadOIDDefault (string Email
+public AdministradorEN ReadOIDDefault (int id
                                        )
 {
         AdministradorEN administradorEN = null;
@@ -37,7 +37,7 @@ public AdministradorEN ReadOIDDefault (string Email
         try
         {
                 SessionInitializeTransaction ();
-                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), Email);
+                administradorEN = (AdministradorEN)session.Get (typeof(AdministradorEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,7 @@ public void ModifyDefault (AdministradorEN administrador)
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Email);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Id);
                 session.Update (administradorEN);
                 SessionCommit ();
         }
@@ -109,7 +109,7 @@ public void ModifyDefault (AdministradorEN administrador)
 }
 
 
-public string New_ (AdministradorEN administrador)
+public int New_ (AdministradorEN administrador)
 {
         try
         {
@@ -132,7 +132,7 @@ public string New_ (AdministradorEN administrador)
                 SessionClose ();
         }
 
-        return administrador.Email;
+        return administrador.Id;
 }
 
 public void Modify (AdministradorEN administrador)
@@ -140,7 +140,10 @@ public void Modify (AdministradorEN administrador)
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Email);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), administrador.Id);
+
+                administradorEN.Email = administrador.Email;
+
 
                 administradorEN.NombreUsu = administrador.NombreUsu;
 
@@ -167,13 +170,13 @@ public void Modify (AdministradorEN administrador)
                 SessionClose ();
         }
 }
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), Email);
+                AdministradorEN administradorEN = (AdministradorEN)session.Load (typeof(AdministradorEN), id);
                 session.Delete (administradorEN);
                 SessionCommit ();
         }

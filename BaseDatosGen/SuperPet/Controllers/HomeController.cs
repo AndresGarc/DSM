@@ -35,6 +35,22 @@ namespace SuperPet.Controllers
             return View(listProds);
         }
 
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            try
+            {
+                SessionInitialize();
+                IEnumerable<Producto> listprods = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosByNombreStock(Convert.ToString(form["prod"])));
+                SessionClose();
+
+                return View(listprods);
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: Home/Details/5
         public ActionResult Details(int id)
@@ -76,8 +92,79 @@ namespace SuperPet.Controllers
             try
             {
                 fileName = "/Images/Uploads/" + fileName;
-                ProductoCEN cen = new ProductoCEN();
-                cen.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock, prod.ValoracionMedia, prod.Destacado, prod.Oferta);
+                ProductoCEN cenf = new ProductoCEN();
+
+
+                CategoriaCAD catCad = new CategoriaCAD();
+                CategoriaCEN catCen = new CategoriaCEN(catCad);
+
+                bool b = true;
+                int idcat = 0;
+
+
+                IList<CategoriaEN> listCatsEN2 = catCen.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listcon = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN2)
+                {
+
+                    if (cosaCats.Nombre == prod.NombreCategoria)
+                    {
+                        if (cosaCats.Supercategoria != null)
+                        {
+                            if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                            {
+                                b = false;
+                                idcat = cosaCats.Id;
+                            }
+                        }
+                    }
+
+                }
+
+
+                if (b == true)
+                {
+                    idcat = catCen.New_(prod.NombreCategoria);
+                }
+
+
+
+                bool a = true;
+                int idSupCat = 0;
+
+                CategoriaCAD catCad2 = new CategoriaCAD();
+                CategoriaCEN catCen2 = new CategoriaCEN(catCad2);
+                IList<CategoriaEN> listCatsEN = catCen2.MuestraCategorias(0, -1);
+                IList<CategoriaEN> listconSup = new List<CategoriaEN>();
+                foreach (CategoriaEN cosaCats in listCatsEN)
+                {
+                    if (cosaCats.Supercategoria != null)
+                    {
+                        if (cosaCats.Supercategoria.Nombre == prod.NombreSupercategoria)
+                        {
+                            a = false;
+                            idSupCat = cosaCats.Supercategoria.Id;
+                        }
+                    }
+                }
+
+
+                if (a == true)
+                {
+                    idSupCat = catCen.New_(prod.NombreSupercategoria);
+                }
+
+
+                //int idSupCat=catCen.New_(hijo.NombreSupcat);
+                catCen.CrearSupercategoria(idcat, idSupCat);
+
+                //prod.IdCategoria =idcat;
+
+                cenf.Modify(prod.id, prod.Nombre, fileName, prod.Precio, prod.Stock, prod.ValoracionMedia, prod.Destacado, prod.Oferta);
+                cenf.CambiarCategoria(prod.id, idcat);
+                ProductoDescripcionCEN cend = new ProductoDescripcionCEN();
+
+                cend.New_(prod.Descripcion, BaseDatosGenNHibernate.Enumerated.BaseDatos.IdiomaEnum.Castellano, prod.id);
 
                 return RedirectToAction("Index");
             }

@@ -99,5 +99,13 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Cate
 {
         return _ICategoriaCAD.GetSubcategorias (p_categoria, first, size);
 }
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSubcategoriasByNombre (string p_nombre)
+{
+        return _ICategoriaCAD.GetSubcategoriasByNombre (p_nombre);
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.CategoriaEN> GetSupercategoriasByNombre (string p_nombre)
+{
+        return _ICategoriaCAD.GetSupercategoriasByNombre (p_nombre);
+}
 }
 }

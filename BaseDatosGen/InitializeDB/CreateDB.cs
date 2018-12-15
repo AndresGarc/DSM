@@ -82,9 +82,9 @@ public static void InitializeData ()
                 UsuarioBasicoCEN usuBCen = new UsuarioBasicoCEN ();
 
                 UsuarioCEN usuCen = new UsuarioCEN ();
-                String usuario1 = usuCen.New_ ("padre@gmail", "pepito86", "asd512", false, "Pepe", "Garcia Antonyez", "Langreo 6", 655542, DateTime.Parse ("10-11-1964"), 03502, true);
-                String usuario2 = usuCen.New_ ("madre@hotmail", "mairalamejor", "yuuhv4215", true, "Maira", "Morales", "Langreo 6", 6542123, DateTime.Parse ("10-07-1965"), 03502, true);
-                String usuario3 = usuCen.New_ ("hijo@outlook", "xxxlucasxxx", "74564684231", true, "Lucas", "Garcia Morales", "Langreo 6", 644787, DateTime.Parse ("10-11-2000"), 03502, true);
+                int usuario1 = usuCen.New_ ("padre@gmail", "pepito86", "asd512", false, "Pepe", "Garcia Antonyez", 655542, DateTime.Parse ("10-11-1964"), true);
+                int usuario2 = usuCen.New_ ("madre@hotmail", "mairalamejor", "yuuhv4215", true, "Maira", "Morales", 6542123, DateTime.Parse ("10-07-1965"), true);
+                int usuario3 = usuCen.New_ ("hijo@outlook", "xxxlucasxxx", "74564684231", true, "Lucas", "Garcia Morales", 644787, DateTime.Parse ("10-11-2000"), true);
 
 
                 usuBCen.Login (usuario1, "asd512");
@@ -113,9 +113,9 @@ public static void InitializeData ()
                 subcats.Add (idCat2);
                 subcats.Add (idCat4);
 
-                cat.CrearSupercategoria(idCat2, idCat);//HALLO PRESINDETE
-                cat.CrearSupercategoria(idCat4, idCat);
-                cat.CrearSupercategoria(idCat6, idCat);
+                cat.CrearSupercategoria (idCat2, idCat); //HALLO PRESINDETE
+                cat.CrearSupercategoria (idCat4, idCat);
+                cat.CrearSupercategoria (idCat6, idCat5);
 
                 //METER OFERTA WE
                 ProductoCEN proCEN = new ProductoCEN ();

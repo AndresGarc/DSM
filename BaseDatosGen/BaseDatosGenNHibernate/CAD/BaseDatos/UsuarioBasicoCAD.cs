@@ -29,7 +29,7 @@ public UsuarioBasicoCAD(ISession sessionAux) : base (sessionAux)
 
 
 
-public UsuarioBasicoEN ReadOIDDefault (string Email
+public UsuarioBasicoEN ReadOIDDefault (int id
                                        )
 {
         UsuarioBasicoEN usuarioBasicoEN = null;
@@ -37,7 +37,7 @@ public UsuarioBasicoEN ReadOIDDefault (string Email
         try
         {
                 SessionInitializeTransaction ();
-                usuarioBasicoEN = (UsuarioBasicoEN)session.Get (typeof(UsuarioBasicoEN), Email);
+                usuarioBasicoEN = (UsuarioBasicoEN)session.Get (typeof(UsuarioBasicoEN), id);
                 SessionCommit ();
         }
 
@@ -89,7 +89,10 @@ public void ModifyDefault (UsuarioBasicoEN usuarioBasico)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), usuarioBasico.Email);
+                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), usuarioBasico.Id);
+
+                usuarioBasicoEN.Email = usuarioBasico.Email;
+
 
                 usuarioBasicoEN.NombreUsu = usuarioBasico.NombreUsu;
 
@@ -118,7 +121,7 @@ public void ModifyDefault (UsuarioBasicoEN usuarioBasico)
 }
 
 
-public string New_ (UsuarioBasicoEN usuarioBasico)
+public int New_ (UsuarioBasicoEN usuarioBasico)
 {
         try
         {
@@ -141,7 +144,7 @@ public string New_ (UsuarioBasicoEN usuarioBasico)
                 SessionClose ();
         }
 
-        return usuarioBasico.Email;
+        return usuarioBasico.Id;
 }
 
 public void Modify (UsuarioBasicoEN usuarioBasico)
@@ -149,7 +152,10 @@ public void Modify (UsuarioBasicoEN usuarioBasico)
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), usuarioBasico.Email);
+                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), usuarioBasico.Id);
+
+                usuarioBasicoEN.Email = usuarioBasico.Email;
+
 
                 usuarioBasicoEN.NombreUsu = usuarioBasico.NombreUsu;
 
@@ -176,13 +182,13 @@ public void Modify (UsuarioBasicoEN usuarioBasico)
                 SessionClose ();
         }
 }
-public void Destroy (string Email
+public void Destroy (int id
                      )
 {
         try
         {
                 SessionInitializeTransaction ();
-                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), Email);
+                UsuarioBasicoEN usuarioBasicoEN = (UsuarioBasicoEN)session.Load (typeof(UsuarioBasicoEN), id);
                 session.Delete (usuarioBasicoEN);
                 SessionCommit ();
         }

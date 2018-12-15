@@ -139,13 +139,35 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
 {
         return _IProductoCAD.GetProductoConOferta (first, size);
 }
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetFavoritos (int p_usuario, int first, int size)
 {
         return _IProductoCAD.GetFavoritos (p_usuario, first, size);
 }
-public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (string p_usuario, int first, int size)
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosCompradosByUsuario (int p_usuario, int first, int size)
 {
         return _IProductoCAD.GetProductosCompradosByUsuario (p_usuario, first, size);
+}
+public void CambiarCategoria (int p_Producto_OID, int p_categoria_OID)
+{
+        //Call to ProductoCAD
+
+        _IProductoCAD.CambiarCategoria (p_Producto_OID, p_categoria_OID);
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByNombreStock (string p_nombre)
+{
+        return _IProductoCAD.GetProductosByNombreStock (p_nombre);
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByPrecios (double? precio1, double ? precio2)
+{
+        return _IProductoCAD.GetProductosByPrecios (precio1, precio2);
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByCategoria (string nombre)
+{
+        return _IProductoCAD.GetProductosByCategoria (nombre);
+}
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosBySuperCategoria (string nombre)
+{
+        return _IProductoCAD.GetProductosBySuperCategoria (nombre);
 }
 }
 }
