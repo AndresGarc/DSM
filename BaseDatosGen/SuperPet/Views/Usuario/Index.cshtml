@@ -10,12 +10,13 @@
 {
 <div class="form-inline">
     <input type="text" name="user" class="form-control"/>
-    <button type="submit" class="btn btn-default btn-sm">
+    <button type="submit" class="btn btn-success btn-sm">
         <span class="glyphicon glyphicon-search"></span> Buscar por nombre
     </button>
     @Html.ActionLink(" ", "Index", "Usuario", FormMethod.Get, new { @class = "btn btn-default btn-sm glyphicon glyphicon-refresh" })
 </div>
 }
+<hr />
 
 <div class="table-responsive">
     <table class="table table-hover table-bordered">

@@ -6,49 +6,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar slider</h2>
+<h2>Editar Slider Principal</h2>
 
 
 @using (Html.BeginForm("Edit", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Imagen1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" accept="image/*" name="file1" />
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Imagen2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" accept="image/*" name="file2" />
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Imagen3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" accept="image/*" name="file3" />
             </div>
         </div>
-
-        <div class="form-group">
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Imagen4, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" accept="image/*" name="file4" />
             </div>
         </div>
-   
-<div class="col-md-offset-2 col-md-10">
-    <input type="submit" value="Guardar Cambios" />
-</div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <!--<input type="submit" value="Crear" class="btn btn-success col-md-6" />-->
+            <button type="submit" value="Crear" class="btn btn-success">Aceptar</button>
+            <button onclick="location.href='@Url.Action("Index")'" type="button" class="btn btn-success">Volver</button>
+        </div>
 
     </div>
+
+</div>
 }
 
 

@@ -10,14 +10,21 @@
 
 @using (Html.BeginForm("Index", "Categoria", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+<div class="row">
     <div class="form-inline">
         <input type="text" name="supcateg" class="form-control" />
-        <button type="submit" class="btn btn-default btn-sm">
+        <button type="submit" class="btn btn-success btn-sm">
             <span class="glyphicon glyphicon-search"></span> Buscar por Supercategoría
         </button>
+
+        @Html.ActionLink(" ", "Index", "Categoria", FormMethod.Get, new { @class = "btn btn-default btn-sm glyphicon glyphicon-refresh" })
     </div>
-    @Html.ActionLink(" ", "Index", "Categoria", FormMethod.Get, new { @class = "col-md-1 btn btn-default btn-sm glyphicon glyphicon-refresh" })
-}
+    
+</div>
+    }
+
+
+<hr />
 
 <button onclick="location.href='@Url.Action("CreateSup")'" type="button" class="btn btn-success  btn-block">Crear Categoría</button>
 <div class="table-responsive">

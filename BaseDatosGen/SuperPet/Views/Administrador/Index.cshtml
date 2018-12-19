@@ -7,6 +7,8 @@
 
 <h2>Administradores</h2>
 
+<hr />
+
 <button onclick="location.href='@Url.Action("Create")'" type="button" class="btn btn-success btn-block">Crear Administrador</button>
 <div class="table-responsive">
     <table class="table table-hover table-bordered">
@@ -36,9 +38,9 @@
                     @Html.DisplayFor(modelItem => item.Logged)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Detalle", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+                    @Html.ActionLink("EDITAR", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("DETALLES", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("BORRAR", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

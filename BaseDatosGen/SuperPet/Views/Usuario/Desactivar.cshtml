@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Desactivar</h2>
+<h2>Desactivar/Activar</h2>
 
-<h3>¿Seguro que quieres desactivar a este usuario?</h3>
+<h3>¿Seguro que quieres desactivar/activar a este usuario?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -28,19 +28,26 @@
 
     </dl>
 
-    @using (Html.BeginForm())
-    {
-        if (Model.Activo == false)
-        {
-            <div class="form-actions no-color">
-                <input type="submit" value="Activar" class="btn btn-success" />
-            </div>
-        }
-        else
-        {
-            <div class="form-actions no-color">
-                <input type="submit" value="Desactivar" class="btn btn-success btn-block" />
-            </div>
-        }
-    }
+    <div class="row">
+        
+            @using (Html.BeginForm())
+            {
+                if (Model.Activo == false)
+                {
+                    <div class="form-actions no-color col-md-1">
+                        <input type="submit" value="Activar" class="btn btn-success col-md-12" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-actions no-color col-md-2">
+                        <input type="submit" value="Desactivar" class="btn btn-success btn-block col-md-2" />
+                    </div>
+                }
+            }
+
+            <button onclick="location.href='@Url.Action("Index")'" type="button" class="btn btn-success">Volver</button>
+        
+    </div>
+
 </div>
