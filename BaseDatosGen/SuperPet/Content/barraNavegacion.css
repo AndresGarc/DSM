@@ -66,3 +66,7 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     text-shadow: 0 0 2px #39ff18;
 }
+
+.input-chiquitillo {
+    width: 80px !important;
+}
