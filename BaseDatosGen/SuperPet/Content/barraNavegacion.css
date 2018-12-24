@@ -70,3 +70,80 @@ h1, h2, h3, h4, h5, h6 {
 .input-chiquitillo {
     width: 80px !important;
 }
+
+.sp-card {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column;
+    padding: 10px !important;
+}
+
+.sp-card-img-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+}
+
+    .sp-card-img-container div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+.sp-card-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    object-fit: cover;
+}
+
+    .sp-card-img:hover {
+        border: solid 2px #269a14;
+        cursor: pointer;
+    }
+
+.sp-card-name {
+    margin: 12px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.sp-card-info {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.sp-card-rate {
+    padding-right: 16px;
+    color: #303030;
+    font-size: 22px;
+}
+
+.sp-card-rate-star {
+    color: #ff8a00;
+    font-size: 18px;
+}
+
+.sp-card-price {
+    color: #f60;
+    font-size: 22px;
+}
+
+.sp-card-price-grey {
+    font-size: 14px;
+    color: #505050;
+}

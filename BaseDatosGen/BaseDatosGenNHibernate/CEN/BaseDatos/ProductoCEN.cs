@@ -169,5 +169,9 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
 {
         return _IProductoCAD.GetProductosBySuperCategoria (nombre);
 }
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetTopVentas ()
+{
+        return _IProductoCAD.GetTopVentas ();
+}
 }
 }

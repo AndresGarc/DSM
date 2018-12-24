@@ -1,4 +1,4 @@
-﻿@model Tuple<System.Collections.Generic.IEnumerable<SuperPet.Models.Slider>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>>
+﻿@model Tuple<System.Collections.Generic.IEnumerable<SuperPet.Models.Slider>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,20 +60,30 @@
     {
         if (item.Stock > 0 && item.Stock < 10)
         {
-            /*<div class="carousel-inner">
-                <div class="item active">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
+    <div class="carousel-inner">
+
+        <div class="item active">
 
 
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
+            <div class="col-md-3 sp-card">
+                <div class="sp-card-img-container">
+                    <div>
+                        <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                    </div>
                 </div>
-                <div class="item">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
+                <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                <div class="sp-card-info">
+                    <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                    <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
                 </div>
-                <div class="item">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
-                </div>
-            </div>*/
+            </div>
+
+
+
+            
+        
+    </div>
+        </div>
         }
     }
     <!-- Left and right controls -->
@@ -98,22 +108,32 @@
         <li data-target="#myCarousel3" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
-    @foreach (var item in Model.Item2)
+    @foreach (var item in Model.Item3)
     {
-        /*<div class="carousel-inner">
+        <div class="carousel-inner">
+
             <div class="item active">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
+
+
+                <div class="col-md-3 sp-card">
+                    <div class="sp-card-img-container">
+                        <div>
+                            <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                        </div>
+                    </div>
+                    <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                    <div class="sp-card-info">
+                        <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                        <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
-            </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
-            </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
-            </div>
-        </div>*/
+        </div>
     }
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
@@ -141,20 +161,30 @@
     {
         if (item.Destacado)
         {
-            /*<div class="carousel-inner">
+            <div class="carousel-inner">
+
                 <div class="item active">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
+
+
+                    <div class="col-md-3 sp-card">
+                        <div class="sp-card-img-container">
+                            <div>
+                                <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                            </div>
+                        </div>
+                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                        <div class="sp-card-info">
+                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                        </div>
+                    </div>
+
+
+
+
+
                 </div>
-                <div class="item">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
-                </div>
-                <div class="item">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
-                </div>
-                <div class="item">
-                    <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
-                </div>
-            </div>*/
+            </div>
         }
     }
     <!-- Left and right controls -->

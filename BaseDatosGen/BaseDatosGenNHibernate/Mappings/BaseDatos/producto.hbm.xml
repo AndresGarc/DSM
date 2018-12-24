@@ -133,5 +133,6 @@
 		  <query name="ProductoENgetProductosByPreciosHQL"><![CDATA[FROM ProductoEN as prod WHERE prod.Precio BETWEEN :precio1 AND :precio2]]></query>
 		  <query name="ProductoENgetProductosByCategoriaHQL"><![CDATA[FROM ProductoEN as pro WHERE pro.Categoria.Nombre LIKE '%' + :nombre + '%']]></query>
 		  <query name="ProductoENgetProductosBySuperCategoriaHQL"><![CDATA[FROM ProductoEN as pro WHERE pro.Categoria.Supercategoria.Nombre LIKE '%' + :nombre + '%']]></query>
+		  <query name="ProductoENgetTopVentasHQL"><![CDATA[FROM ProductoEN as pro order by pro.Id desc]]></query>
 		</hibernate-mapping>
 	

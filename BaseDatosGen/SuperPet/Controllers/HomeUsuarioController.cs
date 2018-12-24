@@ -29,7 +29,10 @@ namespace SuperPet.Controllers
             IEnumerable<Producto> listProds = new AssemblerProducto().ConvertListENToModel(listProdEn).ToList();
             //CategoriaEN catEN = cadCat.ReadOIDDefault(id);
             SessionClose();
-            var tuple2 = Tuple.Create(lista, listProds);
+            SessionInitialize();
+            IEnumerable<Producto> listprods2 = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetTopVentas()); //GetProductosByNombre(Convert.ToString(form["prod"]), 0, -1));
+            SessionClose();
+            var tuple2 = Tuple.Create(lista, listProds, listprods2);
             
             return View(tuple2);
         }
