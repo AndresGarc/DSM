@@ -5,6 +5,7 @@
 }
 <h2>Slider</h2>
 <hr />
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -14,6 +15,8 @@
         <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
+
+   
     @foreach (var item in Model.Item1)
     {
         <div class="carousel-inner">
@@ -29,6 +32,7 @@
             <div class="item">
                 <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
             </div>
+
         </div>
     }
     <!-- Left and right controls -->
@@ -41,10 +45,8 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
 <h2>Top ventas/Últimas unidades</h2> <!----------------------------------------------->
 <hr />
-
 <div id="myCarousel2" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -54,25 +56,25 @@
         <li data-target="#myCarousel2" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
-    @foreach (var item in Model.Item1)
+    @foreach (var item in Model.Item2)
     {
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
-            
-            
-                <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
-            </div>
+        if (item.Stock > 0 && item.Stock < 10)
+        {
+            /*<div class="carousel-inner">
+                <div class="item active">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
 
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
-            </div>
 
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
-            </div>
-
-        </div>
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
+                </div>
+                <div class="item">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
+                </div>
+                <div class="item">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
+                </div>
+            </div>*/
+        }
     }
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
@@ -85,10 +87,8 @@
     </a>
 </div>
 
-
 <h2>Novedades</h2>
 <hr />
-
 <div id="myCarousel3" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -98,9 +98,9 @@
         <li data-target="#myCarousel3" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
-    @foreach (var item in Model.Item1)
+    @foreach (var item in Model.Item2)
     {
-        <div class="carousel-inner">
+        /*<div class="carousel-inner">
             <div class="item active">
                 <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
             </div>
@@ -113,8 +113,7 @@
             <div class="item">
                 <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
             </div>
-
-        </div>
+        </div>*/
     }
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
@@ -127,10 +126,8 @@
     </a>
 </div>
 
-
 <h2>Productos Destacados</h2>
 <hr />
-
 <div id="myCarousel4" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -140,23 +137,25 @@
         <li data-target="#myCarousel4" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
-    @foreach (var item in Model.Item1)
+    @foreach (var item in Model.Item2)
     {
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
-            </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
-            </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
-            </div>
-            <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
-            </div>
-
-        </div>
+        if (item.Destacado)
+        {
+            /*<div class="carousel-inner">
+                <div class="item active">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
+                </div>
+                <div class="item">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
+                </div>
+                <div class="item">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
+                </div>
+                <div class="item">
+                    <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
+                </div>
+            </div>*/
+        }
     }
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel4" data-slide="prev">
@@ -168,6 +167,3 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-
-

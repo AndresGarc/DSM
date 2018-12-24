@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-using BaseDatosGenNHibernate.CAD.BaseDatos;
 using BaseDatosGenNHibernate.CEN.BaseDatos;
 using BaseDatosGenNHibernate.EN.BaseDatos;
+using BaseDatosGenNHibernate.CAD.BaseDatos;
 using SuperPet.Models;
-
 using MvcApplication1.Models;
-
 namespace SuperPet.Controllers
 {
     public class HomeUsuarioController : BasicController
@@ -18,26 +15,24 @@ namespace SuperPet.Controllers
         // GET: HomeUsuario
         public ActionResult Index()
         {
-                SessionInitialize();
-                SliderCAD sliCAD = new SliderCAD(session);
-                SliderCEN sliCEN = new SliderCEN(sliCAD);
-                IList<SliderEN> listSliEN = sliCEN.MuestraSliders(0, -1);
-                IEnumerable<Slider> lista = new AssemblerSlider().ConvertListENToModel(listSliEN).ToList();
-                SessionClose();
-
-                SessionInitialize();
-                ProductoCAD cadArt = new ProductoCAD(session);
-                CategoriaCAD cadCat = new CategoriaCAD(session);
-                ProductoCEN cen = new ProductoCEN(cadArt);
-                IList<ProductoEN> listProdEn = cen.MuestraProductos(0, -1); //DameProductosPorCat(id); Falta implementar este hql
-                IEnumerable<Producto> listProds = new AssemblerProducto().ConvertListENToModel(listProdEn).ToList();
-                //CategoriaEN catEN = cadCat.ReadOIDDefault(id);
-                SessionClose();
-                var tuple2 = Tuple.Create(lista, listProds);
-
-                return View(tuple2);
+            SessionInitialize();
+            SliderCAD sliCAD = new SliderCAD(session);
+            SliderCEN sliCEN = new SliderCEN(sliCAD);
+            IList<SliderEN> listSliEN = sliCEN.MuestraSliders(0, -1);
+            IEnumerable<Slider> lista = new AssemblerSlider().ConvertListENToModel(listSliEN).ToList();
+            SessionClose();
+            SessionInitialize();
+            ProductoCAD cadArt = new ProductoCAD(session);
+            CategoriaCAD cadCat = new CategoriaCAD(session);
+            ProductoCEN cen = new ProductoCEN(cadArt);
+            IList<ProductoEN> listProdEn = cen.MuestraProductos(0, -1); //DameProductosPorCat(id); Falta implementar este hql
+            IEnumerable<Producto> listProds = new AssemblerProducto().ConvertListENToModel(listProdEn).ToList();
+            //CategoriaEN catEN = cadCat.ReadOIDDefault(id);
+            SessionClose();
+            var tuple2 = Tuple.Create(lista, listProds);
+            
+            return View(tuple2);
         }
-        
 
         // GET: HomeUsuario/Details/5
         public ActionResult Details(int id)
