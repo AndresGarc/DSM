@@ -33,5 +33,7 @@ namespace SuperPet.Models
         public System.Data.Entity.DbSet<MvcApplication1.Models.Producto> Productoes { get; set; }
 
         public System.Data.Entity.DbSet<SuperPet.Models.Categoria> Categorias { get; set; }
+
+        public System.Data.Entity.DbSet<SuperPet.Models.Slider> Sliders { get; set; }
     }
 }

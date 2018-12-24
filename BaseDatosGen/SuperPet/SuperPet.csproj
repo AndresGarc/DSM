@@ -229,6 +229,7 @@
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeUsuarioController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -339,6 +340,7 @@
     <Content Include="Views\Pedido\Usuario.cshtml" />
     <Content Include="Views\Usuario\Desactivar.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\HomeUsuario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
