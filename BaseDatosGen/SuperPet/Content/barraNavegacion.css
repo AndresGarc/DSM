@@ -147,3 +147,21 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     color: #505050;
 }
+
+
+.colotitulo {
+    color: white !important;
+    font-size: 32px;
+}
+
+.img-prods {
+    width: 300x;
+    height: 300px;
+    border-radius: 32px;
+}
+
+.color-specs-prod {
+    color: #FF5733;
+    font-size: 20px;
+    font-weight: bold;
+}

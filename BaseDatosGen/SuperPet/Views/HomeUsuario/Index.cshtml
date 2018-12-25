@@ -1,4 +1,4 @@
-﻿@model Tuple<System.Collections.Generic.IEnumerable<SuperPet.Models.Slider>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>>
+@model Tuple<System.Collections.Generic.IEnumerable<SuperPet.Models.Slider>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>, System.Collections.Generic.IEnumerable<MvcApplication1.Models.Producto>>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +14,6 @@
         <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
     <!-- Wrapper for slides -->
-
     @foreach (var item in Model.Item1)
     {
         <div class="carousel-inner">
@@ -42,7 +41,7 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<h2>Top ventas/Últimas unidades</h2> <!----------------------------------------------->
+<h2>Top ventas/Unidades finales</h2> <!----------------------------------------------->
 <hr />
 <div id="myCarousel2" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -79,7 +78,7 @@
                                 <div class="col-md-3 sp-card">
                                     <div class="sp-card-img-container">
                                         <div>
-                                            <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                         </div>
                                     </div>
                                     <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
@@ -117,7 +116,7 @@
                                         <div class="col-md-3 sp-card">
                                             <div class="sp-card-img-container">
                                                 <div>
-                                                    <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                                    <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                                 </div>
                                             </div>
                                             <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
@@ -147,7 +146,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
 <h2>Novedades</h2>
 <hr />
 <div id="myCarousel3" class="carousel slide" data-ride="carousel">
@@ -179,7 +177,7 @@
                             <div class="col-md-3 sp-card">
                                 <div class="sp-card-img-container">
                                     <div>
-                                        <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                        <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                     </div>
                                 </div>
                                 <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
@@ -207,14 +205,14 @@
                             {
 
                                 d++;
-                                if (d > 4 && d<=8)
+                                if (d > 4 && d <= 8)
                                 {
 
 
                                     <div class="col-md-3 sp-card">
                                         <div class="sp-card-img-container">
                                             <div>
-                                                <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                             </div>
                                         </div>
                                         <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
@@ -234,7 +232,6 @@
                 </div>
             }
         }
-
     </div>
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
@@ -283,7 +280,7 @@
                                 <div class="col-md-3 sp-card">
                                     <div class="sp-card-img-container">
                                         <div>
-                                            <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                         </div>
                                     </div>
                                     <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
@@ -322,7 +319,7 @@
                                         <div class="col-md-3 sp-card">
                                             <div class="sp-card-img-container">
                                                 <div>
-                                                    <img onclick="location.href='@Url.Action("Index", "Producto")'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                                    <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                                 </div>
                                             </div>
                                             <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>

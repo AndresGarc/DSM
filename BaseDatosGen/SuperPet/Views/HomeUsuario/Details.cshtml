@@ -1,0 +1,118 @@
+﻿@model MvcApplication1.Models.Producto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Producto para la vista del usuario desde el home -->
+
+<div>
+
+
+    <div class="well">
+        <div class="colotitulo">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    </div>
+
+
+    <!--SEPARACION: CATEGORIA Y SUPERCATEGORIA-->
+
+    <div class="row">
+
+        <div class="col-md-1">
+            
+                Categorías:
+            
+        </div>
+
+        <div class="col-md-1">
+            @Html.DisplayFor(model => model.NombreSupercategoria)
+        </div>
+
+        <div class="col-md-offset-1">
+            @Html.DisplayFor(model => model.NombreCategoria)
+        </div>
+
+
+    </div>
+
+
+   <p></p>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div>
+                <img class="img-prods" src="@Html.DisplayFor(model => model.Imagen)">
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="well2">
+                <div class="color-specs-prod ">
+                    Descripción del producto
+                </div>
+
+
+                @Html.DisplayFor(model => model.Descripcion)
+
+
+
+                <p></p>
+
+                <div class="color-specs-prod">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </div>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
+
+
+                <div class="color-specs-prod">
+                    @Html.DisplayNameFor(model => model.Oferta)
+                </div>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Oferta)
+                </dd>
+
+                <p></p>
+
+
+                <div class="color-specs-prod">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </div>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+
+                <p></p>
+
+
+                <!--QUE SE UN MENSAJE ASI GUAPO PARA QUE EL CLIENTE LO LEA Y DIGA DAAAAANB-->
+                <div class="color-specs-prod">
+                    @Html.DisplayNameFor(model => model.Destacado)
+                </div>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Destacado)
+                </dd>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<p>
+    <button onclick="location.href='@Url.Action("Index")'" type="button" class="btn btn-success">Volver</button>
+</p>

@@ -40,7 +40,12 @@ namespace SuperPet.Controllers
         // GET: HomeUsuario/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Producto prod = null;
+            SessionInitialize();
+            ProductoEN prodEN = new ProductoCAD(session).ReadOIDDefault(id);
+            prod = new AssemblerProducto().ConvertENToModelUI(prodEN);
+            SessionClose();
+            return View(prod);
         }
 
         // GET: HomeUsuario/Create
