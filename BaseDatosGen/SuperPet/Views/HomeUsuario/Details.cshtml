@@ -18,40 +18,46 @@
 
     <!--SEPARACION: CATEGORIA Y SUPERCATEGORIA-->
 
-    <div class="row">
+    <div class="row ">
 
-        <div class="col-md-1">
-            
-                Categorías:
-            
-        </div>
-
-        <div class="col-md-1">
+        <div class="col-md-2">
             @Html.DisplayFor(model => model.NombreSupercategoria)
+            >
+            @Html.DisplayFor(model => model.NombreCategoria)
+
         </div>
 
-        <div class="col-md-offset-1">
-            @Html.DisplayFor(model => model.NombreCategoria)
-        </div>
 
 
     </div>
+    <hr />
 
+    <p></p>
 
-   <p></p>
-
-    <div class="row">
+    <div class="row center-block">
         <div class="col-md-6">
 
             <div>
-                <img class="img-prods" src="@Html.DisplayFor(model => model.Imagen)">
+                <img class="img-prods img-responsive" src="@Html.DisplayFor(model => model.Imagen)">
             </div>
 
         </div>
+        <br />
+        <div class="col-md-4">
 
-        <div class="col-md-6">
+            <div class="well3">
 
-            <div class="well2">
+                @{
+
+                    if (Model.Destacado)
+                    {
+                        <div class="color-specs-prod">
+                            PRODUCTO DESTACADO!!!!!!!
+                        </div>
+                    }
+                }
+
+
                 <div class="color-specs-prod ">
                     Descripción del producto
                 </div>
@@ -63,56 +69,117 @@
 
                 <p></p>
 
-                <div class="color-specs-prod">
-                    @Html.DisplayNameFor(model => model.Precio)
-                </div>
+                @{
+                    if (Model.Oferta == 0)
+                    {
 
-                <dd>
-                    @Html.DisplayFor(model => model.Precio)
-                </dd>
+                        <div class="color-specs-prod">
+                            @Html.DisplayNameFor(model => model.Precio)
+                        </div>
 
+                        <div class=" precio">
+                            @Html.DisplayFor(model => model.Precio)
+                        </div>
 
-                <div class="color-specs-prod">
-                    @Html.DisplayNameFor(model => model.Oferta)
-                </div>
+                    }
+                    if (Model.Oferta > 0)
+                    {
 
-                <dd>
-                    @Html.DisplayFor(model => model.Oferta)
-                </dd>
+                        <div class="color-specs-prod">
+                            @Html.DisplayNameFor(model => model.Precio)
 
+                        </div>
+
+                        <div>
+                            ¡OFERTA LIMITADA!
+                        </div>
+
+                        double precioOferta = (Model.Precio - (Model.Precio * Model.Oferta));
+                        Console.WriteLine(precioOferta);
+                        String precioFinal = Convert.ToString(precioOferta);
+                        <div class="row">
+                            <div class=" precio tachar col-md-4">
+                                @Html.DisplayFor(model => model.Precio)
+
+                            </div>
+                            <div class="precio-oferta col-md-4">
+                                @Html.DisplayName(precioFinal) €
+                            </div>
+                        </div>
+                    }
+                }
                 <p></p>
 
+                @{
+                    if (Model.Stock > 10) //HAY STOCK
+                    {
+                        <div>
+                            Quedan @Html.DisplayFor(model => model.Stock) uds
+                        </div>
+                    }
 
+                    if (Model.Stock > 1 && Model.Stock <= 10) //POCO STOCK
+                    {
+                        <div class="poco-stock">
+                            ¡ULTIMAS UNIDADES DEL PRODUCTO!
+                        </div>
+                        <div>
+                            Quedan @Html.DisplayFor(model => model.Stock) uds
+                        </div>
+                    }
+
+                    if (Model.Stock == 1) //EXCEPCION
+                    {
+                        <div class=" color-specs-prod">
+                            Queda SOLO 1 UNIDAD!!!
+                        </div>
+                    }
+
+                    if (Model.Stock == 0) //NO QUEDA NADA DE STOCK
+                    {
+                        <div class="color-specs-prod">
+                            NO QUEDAN UNIDADES
+                        </div>
+                    }
+
+
+                }
+
+                <br />
+
+
+            </div>
+
+            <div class="row col-md-12">
+                <button type="button" class="btn btn-success">Añadir a favoritos</button>
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
+                </button>
+            </div>
+
+            <br />
+            <div>
+                <br />
                 <div class="color-specs-prod">
-                    @Html.DisplayNameFor(model => model.Stock)
+                    VALORAR (IMPLEMENTAR VALORACIONES)
                 </div>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Stock)
-                </dd>
-
-                <p></p>
-
-
-                <!--QUE SE UN MENSAJE ASI GUAPO PARA QUE EL CLIENTE LO LEA Y DIGA DAAAAANB-->
-                <div class="color-specs-prod">
-                    @Html.DisplayNameFor(model => model.Destacado)
-                </div>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Destacado)
-                </dd>
-
             </div>
 
         </div>
 
     </div>
 
+    <br />
+
+    <div class="wellcoments">
+        <div class="colo-coments">
+            COMENTARIOS 
+        </div>
+    </div>
+
 
 </div>
+ 
+<br />
 
 
-<p>
-    <button onclick="location.href='@Url.Action("Index")'" type="button" class="btn btn-success">Volver</button>
-</p>
