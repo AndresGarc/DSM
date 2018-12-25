@@ -54,3 +54,4 @@ C:\Users\Pablo G\Desktop\DSM-master\BaseDatosGen\BaseDatosGenNHibernate\obj\Debu
 C:\Users\Pablo G\Desktop\DSM-master\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.dll
 C:\Users\Pablo G\Desktop\DSM-master\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.pdb
 C:\Users\Pablo G\Desktop\DSM-master\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csprojAssemblyReference.cache
+C:\OOH4RIA\workspace\BaseDatosGen\BaseDatosGenNHibernate\obj\Debug\BaseDatosGenNHibernate.csprojAssemblyReference.cache
