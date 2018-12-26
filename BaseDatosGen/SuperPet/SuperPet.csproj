@@ -242,11 +242,13 @@
     <Compile Include="Models\Administrador.cs" />
     <Compile Include="Models\AssemblerAdministrador.cs" />
     <Compile Include="Models\AssemblerCategoria.cs" />
+    <Compile Include="Models\AssemblerComentario.cs" />
     <Compile Include="Models\AssemblerPedido.cs" />
     <Compile Include="Models\AssemblerProducto.cs" />
     <Compile Include="Models\AssemblerSlider.cs" />
     <Compile Include="Models\AssemblerUsuario.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pedido.cs" />

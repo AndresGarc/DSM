@@ -79,6 +79,9 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-flow: column;
     padding: 10px !important;
+
+    width: 200px;
+    height:300px;
 }
 
 .sp-card-img-container {
@@ -189,4 +192,16 @@ h1, h2, h3, h4, h5, h6 {
 .colo-coments {
     color: white !important;
     font-size: 15px;
+}
+
+.slider-img {
+    width: 1500px !important;
+    max-height: 450px;
+    
+}
+
+.centrarCaja{
+    width:auto;
+    position:relative;
+    left:16%;
 }

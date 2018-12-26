@@ -45,7 +45,13 @@ namespace SuperPet.Controllers
             ProductoEN prodEN = new ProductoCAD(session).ReadOIDDefault(id);
             prod = new AssemblerProducto().ConvertENToModelUI(prodEN);
             SessionClose();
-            return View(prod);
+            SessionInitialize();
+            IEnumerable<Comentario> listcoms = new AssemblerComentario().ConvertListENToModel(new ComentarioCEN(new ComentarioCAD(session)).GetAllComentariosByProducto(id, 0, 10)); //GetProductosByNombre(Convert.ToString(form["prod"]), 0, -1));
+            SessionClose();
+
+            var tuple2 = Tuple.Create(prod, listcoms);
+
+            return View(tuple2);
         }
 
         // GET: HomeUsuario/Create

@@ -1,55 +1,40 @@
-﻿@model MvcApplication1.Models.Producto
-
+﻿@model Tuple<MvcApplication1.Models.Producto, System.Collections.Generic.IEnumerable<SuperPet.Models.Comentario>>
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Producto para la vista del usuario desde el home -->
-
 <div>
-
 
     <div class="well">
         <div class="colotitulo">
-            @Html.DisplayFor(model => model.Nombre)
+            @Html.DisplayFor(model => model.Item1.Nombre)
         </div>
     </div>
 
-
     <!--SEPARACION: CATEGORIA Y SUPERCATEGORIA-->
-
     <div class="row ">
-
         <div class="col-md-2">
-            @Html.DisplayFor(model => model.NombreSupercategoria)
+            @Html.DisplayFor(model => model.Item1.NombreSupercategoria)
             >
-            @Html.DisplayFor(model => model.NombreCategoria)
-
+            @Html.DisplayFor(model => model.Item1.NombreCategoria)
         </div>
-
-
 
     </div>
     <hr />
-
     <p></p>
-
     <div class="row center-block">
         <div class="col-md-6">
-
             <div>
-                <img class="img-prods img-responsive" src="@Html.DisplayFor(model => model.Imagen)">
+                <img class="img-prods img-responsive" src="@Html.DisplayFor(model => model.Item1.Imagen)">
             </div>
-
         </div>
         <br />
         <div class="col-md-4">
-
             <div class="well3">
-
                 @{
 
-                    if (Model.Destacado)
+                    if (Model.Item1.Destacado)
                     {
                         <div class="color-specs-prod">
                             PRODUCTO DESTACADO!!!!!!!
@@ -57,50 +42,43 @@
                     }
                 }
 
-
                 <div class="color-specs-prod ">
                     Descripción del producto
                 </div>
 
-
-                @Html.DisplayFor(model => model.Descripcion)
-
-
+                @Html.DisplayFor(model => model.Item1.Descripcion)
 
                 <p></p>
-
                 @{
-                    if (Model.Oferta == 0)
+                    if (Model.Item1.Oferta == 0)
                     {
 
                         <div class="color-specs-prod">
-                            @Html.DisplayNameFor(model => model.Precio)
+                            @Html.DisplayNameFor(model => model.Item1.Precio)
                         </div>
 
                         <div class=" precio">
-                            @Html.DisplayFor(model => model.Precio)
+                            @Html.DisplayFor(model => model.Item1.Precio)
                         </div>
 
                     }
-                    if (Model.Oferta > 0)
+                    if (Model.Item1.Oferta > 0)
                     {
 
                         <div class="color-specs-prod">
-                            @Html.DisplayNameFor(model => model.Precio)
-
+                            @Html.DisplayNameFor(model => model.Item1.Precio)
                         </div>
 
                         <div>
                             ¡OFERTA LIMITADA!
                         </div>
 
-                        double precioOferta = (Model.Precio - (Model.Precio * Model.Oferta));
+                        double precioOferta = (Model.Item1.Precio - (Model.Item1.Precio * Model.Item1.Oferta));
                         Console.WriteLine(precioOferta);
                         String precioFinal = Convert.ToString(precioOferta);
                         <div class="row">
                             <div class=" precio tachar col-md-4">
-                                @Html.DisplayFor(model => model.Precio)
-
+                                @Html.DisplayFor(model => model.Item1.Precio)
                             </div>
                             <div class="precio-oferta col-md-4">
                                 @Html.DisplayName(precioFinal) €
@@ -109,33 +87,32 @@
                     }
                 }
                 <p></p>
-
                 @{
-                    if (Model.Stock > 10) //HAY STOCK
+                    if (Model.Item1.Stock > 10) //HAY STOCK
                     {
                         <div>
-                            Quedan @Html.DisplayFor(model => model.Stock) uds
+                            Quedan @Html.DisplayFor(model => model.Item1.Stock) uds
                         </div>
                     }
 
-                    if (Model.Stock > 1 && Model.Stock <= 10) //POCO STOCK
+                    if (Model.Item1.Stock > 1 && Model.Item1.Stock <= 10) //POCO STOCK
                     {
                         <div class="poco-stock">
                             ¡ULTIMAS UNIDADES DEL PRODUCTO!
                         </div>
                         <div>
-                            Quedan @Html.DisplayFor(model => model.Stock) uds
+                            Quedan @Html.DisplayFor(model => model.Item1.Stock) uds
                         </div>
                     }
 
-                    if (Model.Stock == 1) //EXCEPCION
+                    if (Model.Item1.Stock == 1) //EXCEPCION
                     {
                         <div class=" color-specs-prod">
                             Queda SOLO 1 UNIDAD!!!
                         </div>
                     }
 
-                    if (Model.Stock == 0) //NO QUEDA NADA DE STOCK
+                    if (Model.Item1.Stock == 0) //NO QUEDA NADA DE STOCK
                     {
                         <div class="color-specs-prod">
                             NO QUEDAN UNIDADES
@@ -144,19 +121,15 @@
 
 
                 }
-
                 <br />
 
-
             </div>
-
             <div class="row col-md-12">
                 <button type="button" class="btn btn-success">Añadir a favoritos</button>
                 <button type="button" class="btn btn-success">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
                 </button>
             </div>
-
             <br />
             <div>
                 <br />
@@ -164,22 +137,34 @@
                     VALORAR (IMPLEMENTAR VALORACIONES)
                 </div>
             </div>
-
         </div>
-
     </div>
-
     <br />
-
     <div class="wellcoments">
+        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="colo-coments">
-            COMENTARIOS 
+            COMENTARIOS
         </div>
     </div>
+    @foreach (var item in Model.Item2)
+    {
+        <div>
+            <div class="row">
+                <div>@Html.DisplayFor(modelItem => item.NombreUsuario)</div>
+                <div>@Html.DisplayFor(modelItem => item.Fecha)</div>
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.TextoComentario)
+            </div>
 
+        </div>
+        <hr />
 
+    }
+    <div class="color-specs-prod">
+        !PONER LA PAGINACION GENTE¡
+    </div>
 </div>
- 
 <br />
 
 

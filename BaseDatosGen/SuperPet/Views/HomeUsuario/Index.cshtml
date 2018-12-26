@@ -3,8 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Slider</h2>
-<hr />
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -18,16 +17,16 @@
     {
         <div class="carousel-inner">
             <div class="item active">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" height="100px" />
+                <img src="@Html.DisplayFor(modelItem => item.Imagen1)" alt="Imagen slider 1 no está cargada" class="slider-img" height= "200px"/>
             </div>
             <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" height="100px" />
+                <img src="@Html.DisplayFor(modelItem => item.Imagen2)" alt="Imagen slider 2 no está cargada" class="slider-img" height= "100px"/>
             </div>
             <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" height="100px" />
+                <img src="@Html.DisplayFor(modelItem => item.Imagen3)" alt="Imagen slider 3 no está cargada" class="slider-img" height= "100px"/>
             </div>
             <div class="item">
-                <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" height="100px" />
+                <img src="@Html.DisplayFor(modelItem => item.Imagen4)" alt="Imagen slider 4 no está cargada" class="slider-img" height= "100px"/>
             </div>
         </div>
     }
@@ -57,38 +56,40 @@
     <div class="carousel-inner">
         <div class="item active">
             <div class="row">
-                @{int w = 0;
-                    foreach (var item in Model.Item3)
-                    {
-                        w++;
-                    }
-
-                    int c = 0;
-                    foreach (var item in Model.Item3)
-                    {
-                        c++;
-                        if (c <= 4)
+                <div class="centrarCaja">
+                    @{int w = 0;
+                        foreach (var item in Model.Item3)
                         {
+                            w++;
+                        }
+
+                        int c = 0;
+                        foreach (var item in Model.Item3)
+                        {
+                            c++;
+                            if (c <= 4)
+                            {
 
 
-                            <div class="col-md-3 sp-card">
-                                <div class="sp-card-img-container">
-                                    <div>
-                                        <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                <div class="col-md-3 sp-card">
+                                    <div class="sp-card-img-container">
+                                        <div>
+                                            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                        </div>
+                                    </div>
+                                    <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                    <div class="sp-card-info">
+                                        <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                        <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
                                     </div>
                                 </div>
-                                <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                <div class="sp-card-info">
-                                    <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                    <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
-                                </div>
-                            </div>
+
+                            }
 
                         }
 
                     }
-
-                }
+                </div>
             </div>
         </div>
         @{
@@ -96,35 +97,37 @@
             {
                 <div class="item">
                     <div class="row">
-                        @{ int d = 0;
+                        <div class="centrarCaja">
+                            @{ int d = 0;
 
-                            foreach (var item in Model.Item3)
-                            {
-
-                                d++;
-                                if (d > 4 && d <= 8)
+                                foreach (var item in Model.Item3)
                                 {
 
+                                    d++;
+                                    if (d > 4 && d <= 8)
+                                    {
 
-                                    <div class="col-md-3 sp-card">
-                                        <div class="sp-card-img-container">
-                                            <div>
-                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+
+                                        <div class="col-md-3 sp-card">
+                                            <div class="sp-card-img-container">
+                                                <div>
+                                                    <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                                </div>
+                                            </div>
+                                            <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                            <div class="sp-card-info">
+                                                <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                                <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
                                             </div>
                                         </div>
-                                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                        <div class="sp-card-info">
-                                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
-                                        </div>
-                                    </div>
+
+                                    }
+
 
                                 }
 
-
                             }
-
-                        }
+                        </div>
                     </div>
                 </div>
             }
@@ -159,84 +162,88 @@
     <div class="carousel-inner">
         <div class="item active">
             <div class="row">
-                @{ int v = 0;
-                    foreach (var item in Model.Item2)
-                    {
-                        if (item.Stock > 0 && item.Stock < 10)
+                <div class="centrarCaja">
+                    @{ int v = 0;
+                        foreach (var item in Model.Item2)
                         {
-                            v++;
-                        }
-                    }
-
-                    int a = 0;
-
-                    foreach (var item in Model.Item2)
-                    {
-                        if (item.Stock > 0 && item.Stock < 10)
-                        {
-                            a++;
-                            if (a <= 4)
+                            if (item.Stock > 0 && item.Stock < 10)
                             {
-
-
-                                <div class="col-md-3 sp-card">
-                                    <div class="sp-card-img-container">
-                                        <div>
-                                            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img img-responsive" src="@Html.DisplayFor(modelItem => item.Imagen)">
-                                        </div>
-                                    </div>
-                                    <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                    <div class="sp-card-info">
-                                        <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                        <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
-                                    </div>
-                                </div>
-
+                                v++;
                             }
                         }
 
+                        int a = 0;
+
+                        foreach (var item in Model.Item2)
+                        {
+                            if (item.Stock > 0 && item.Stock < 10)
+                            {
+                                a++;
+                                if (a <= 4)
+                                {
+
+
+                                    <div class="col-md-3 sp-card">
+                                        <div class="sp-card-img-container">
+                                            <div>
+                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img img-responsive" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                            </div>
+                                        </div>
+                                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                        <div class="sp-card-info">
+                                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+
+
+                        }
 
                     }
-
-                }
+                </div>
             </div>
         </div>
         @{
             if (v > 4)
             {
-                <div class="item">
-                    <div class="row">
-                        @{ int b = 0;
+        <div class="item">
+            <div class="row">
+                <div class="centrarCaja">
+                    @{ int b = 0;
 
-                            foreach (var item in Model.Item2)
+                        foreach (var item in Model.Item2)
+                        {
+                            if (item.Stock > 0 && item.Stock < 10)
                             {
-                                if (item.Stock > 0 && item.Stock < 10)
+                                b++;
+                                if (b > 4 && b <= 8)
                                 {
-                                    b++;
-                                    if (b > 4 && b <= 8)
-                                    {
 
 
-                                        <div class="col-md-3 sp-card">
-                                            <div class="sp-card-img-container">
-                                                <div>
-                                                    <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img img-responsive" src="@Html.DisplayFor(modelItem => item.Imagen)">
-                                                </div>
-                                            </div>
-                                            <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                            <div class="sp-card-info">
-                                                <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                                <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                    <div class="col-md-3 sp-card">
+                                        <div class="sp-card-img-container">
+                                            <div>
+                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img img-responsive" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                             </div>
                                         </div>
+                                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                        <div class="sp-card-info">
+                                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                        </div>
+                                    </div>
 
-                                    }
                                 }
                             }
-
                         }
-                    </div>
+
+                    }
                 </div>
+            </div>
+        </div>
             }
         }
     </div>
@@ -268,86 +275,90 @@
     <div class="carousel-inner">
         <div class="item active">
             <div class="row">
-                @{int z = 0;
-                    foreach (var item in Model.Item2)
-                    {
-                        if (item.Destacado)
+                <div class="centrarCaja">
+                    @{int z = 0;
+                        foreach (var item in Model.Item2)
                         {
-                            z++;
-                        }
-                    }
-
-                    int e = 0;
-
-                    foreach (var item in Model.Item2)
-                    {
-                        if (item.Destacado)
-                        {
-                            e++;
-                            if (e <= 4)
+                            if (item.Destacado)
                             {
-
-
-                                <div class="col-md-3 sp-card">
-                                    <div class="sp-card-img-container">
-                                        <div>
-                                            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
-                                        </div>
-                                    </div>
-                                    <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                    <div class="sp-card-info">
-                                        <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                        <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
-                                    </div>
-                                </div>
-
+                                z++;
                             }
                         }
 
+                        int e = 0;
+
+                        foreach (var item in Model.Item2)
+                        {
+                            if (item.Destacado)
+                            {
+                                e++;
+                                if (e <= 4)
+                                {
+
+
+                                    <div class="col-md-3 sp-card">
+                                        <div class="sp-card-img-container">
+                                            <div>
+                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
+                                            </div>
+                                        </div>
+                                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                        <div class="sp-card-info">
+                                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                        </div>
+                                    </div>
+
+                                }
+                            }
+
+
+                        }
 
                     }
-
-                }
+                </div>
             </div>
         </div>
         @{
             if (z > 4)
             {
-                <div class="item">
-                    <div class="row">
-                        @{ int f = 0;
+        <div class="item">
+            <div class="row">
+                <div class="centrarCaja">
+                    @{ int f = 0;
 
-                            foreach (var item in Model.Item2)
+                        foreach (var item in Model.Item2)
+                        {
+
+                            if (item.Destacado)
                             {
-
-                                if (item.Destacado)
+                                f++;
+                                if (f > 4 && f <= 8)
                                 {
-                                    f++;
-                                    if (f > 4 && f <= 8)
-                                    {
 
 
-                                        <div class="col-md-3 sp-card">
-                                            <div class="sp-card-img-container">
-                                                <div>
-                                                    <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
-                                                </div>
-                                            </div>
-                                            <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
-                                            <div class="sp-card-info">
-                                                <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
-                                                <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                    <div class="col-md-3 sp-card">
+                                        <div class="sp-card-img-container">
+                                            <div>
+                                                <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = item.id })'" class="sp-card-img" src="@Html.DisplayFor(modelItem => item.Imagen)">
                                             </div>
                                         </div>
+                                        <h5 class="sp-card-name">@Html.DisplayFor(modelItem => item.Nombre)</h5>
+                                        <div class="sp-card-info">
+                                            <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => item.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+                                            <h5 class="sp-card-price">@Html.DisplayFor(modelItem => item.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+                                        </div>
+                                    </div>
 
-                                    }
                                 }
-
                             }
 
                         }
-                    </div>
+
+                    }
                 </div>
+            </div>
+        </div>
             }
         }
     </div>
