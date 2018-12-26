@@ -54,27 +54,19 @@ namespace SuperPet.Controllers
             return View(tuple2);
         }
 
-        // GET: HomeUsuario/Create
-        public ActionResult Create()
+        // GET: HomeUsuario/PorCategoria/
+        public ActionResult PorCategoria(int id)
         {
-            return View();
+
+            SessionInitialize();
+            IEnumerable<Producto> listprod = new AssemblerProducto().ConvertListENToModel(new ProductoCEN(new ProductoCAD(session)).GetProductosByCategoriaId(id,0,-1));
+            SessionClose();
+
+
+
+            return View(listprod);
         }
 
-        // POST: HomeUsuario/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: HomeUsuario/Edit/5
         public ActionResult Edit(int id)

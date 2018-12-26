@@ -74,5 +74,8 @@ System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>
 
 
 System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetTopVentas ();
+
+
+System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByCategoriaId (int id, int first, int size);
 }
 }

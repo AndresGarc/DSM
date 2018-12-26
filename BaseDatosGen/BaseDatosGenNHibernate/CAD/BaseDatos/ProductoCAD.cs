@@ -771,5 +771,42 @@ public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.Prod
 
         return result;
 }
+public System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> GetProductosByCategoriaId (int id, int first, int size)
+{
+        System.Collections.Generic.IList<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM ProductoEN self where FROM ProductoEN as pro WHERE pro.Categoria.Id=:id";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("ProductoENgetProductosByCategoriaIdHQL");
+                query.SetParameter ("id", id);
+
+                if (size > 0) {
+                        query.SetFirstResult (first).SetMaxResults (size);
+                }
+                else{
+                        query.SetFirstResult (first);
+                }
+
+                result = query.List<BaseDatosGenNHibernate.EN.BaseDatos.ProductoEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is BaseDatosGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new BaseDatosGenNHibernate.Exceptions.DataLayerException ("Error in ProductoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

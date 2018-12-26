@@ -164,7 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .color-specs-prod {
-    color: #FF5733;
+    color: #FF9600;
     font-size: 20px;
     font-weight: bold;
 }
@@ -181,12 +181,12 @@ h1, h2, h3, h4, h5, h6 {
 .precio-oferta {
     font-weight: bold;
     font-size: 15px;
-    color: #FF5733;
+    color: #FF9600;
 }
 
 .poco-stock {
     font-size: 10px;
-    color: #FF5733;
+    color: #FF9600;
 }
 
 .colo-coments {
@@ -204,4 +204,14 @@ h1, h2, h3, h4, h5, h6 {
     width:auto;
     position:relative;
     left:16%;
+}
+
+.usuario-comentario {
+    font-weight: bold;
+    font-size: 18px;
+    color: #FF9600
+}
+
+.fecha-comentario {
+    font-size: 12px;
 }

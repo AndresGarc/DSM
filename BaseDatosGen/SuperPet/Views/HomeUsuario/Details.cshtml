@@ -1,10 +1,13 @@
 ﻿@model Tuple<MvcApplication1.Models.Producto, System.Collections.Generic.IEnumerable<SuperPet.Models.Comentario>>
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!-- Producto para la vista del usuario desde el home -->
+
 <div>
+
 
     <div class="well">
         <div class="colotitulo">
@@ -12,26 +15,38 @@
         </div>
     </div>
 
+
     <!--SEPARACION: CATEGORIA Y SUPERCATEGORIA-->
+
     <div class="row ">
+
         <div class="col-md-2">
             @Html.DisplayFor(model => model.Item1.NombreSupercategoria)
             >
             @Html.DisplayFor(model => model.Item1.NombreCategoria)
+
         </div>
+
+
 
     </div>
     <hr />
+
     <p></p>
+
     <div class="row center-block">
         <div class="col-md-6">
+
             <div>
                 <img class="img-prods img-responsive" src="@Html.DisplayFor(model => model.Item1.Imagen)">
             </div>
+
         </div>
         <br />
         <div class="col-md-4">
+
             <div class="well3">
+
                 @{
 
                     if (Model.Item1.Destacado)
@@ -42,13 +57,18 @@
                     }
                 }
 
+
                 <div class="color-specs-prod ">
                     Descripción del producto
                 </div>
 
+
                 @Html.DisplayFor(model => model.Item1.Descripcion)
 
+
+
                 <p></p>
+
                 @{
                     if (Model.Item1.Oferta == 0)
                     {
@@ -67,6 +87,7 @@
 
                         <div class="color-specs-prod">
                             @Html.DisplayNameFor(model => model.Item1.Precio)
+
                         </div>
 
                         <div>
@@ -79,6 +100,7 @@
                         <div class="row">
                             <div class=" precio tachar col-md-4">
                                 @Html.DisplayFor(model => model.Item1.Precio)
+
                             </div>
                             <div class="precio-oferta col-md-4">
                                 @Html.DisplayName(precioFinal) €
@@ -87,6 +109,7 @@
                     }
                 }
                 <p></p>
+
                 @{
                     if (Model.Item1.Stock > 10) //HAY STOCK
                     {
@@ -121,15 +144,19 @@
 
 
                 }
+
                 <br />
 
+
             </div>
+
             <div class="row col-md-12">
                 <button type="button" class="btn btn-success">Añadir a favoritos</button>
                 <button type="button" class="btn btn-success">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
                 </button>
             </div>
+
             <br />
             <div>
                 <br />
@@ -137,34 +164,43 @@
                     VALORAR (IMPLEMENTAR VALORACIONES)
                 </div>
             </div>
+
         </div>
+
     </div>
+
     <br />
+
     <div class="wellcoments">
         <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="colo-coments">
             COMENTARIOS
         </div>
     </div>
+
     @foreach (var item in Model.Item2)
     {
         <div>
             <div class="row">
-                <div>@Html.DisplayFor(modelItem => item.NombreUsuario)</div>
-                <div>@Html.DisplayFor(modelItem => item.Fecha)</div>
+                <div class="usuario-comentario col-sm-1">@Html.DisplayFor(modelItem => item.NombreUsuario)</div>
+                <div class="fecha-comentario col-sm-2">@Html.DisplayFor(modelItem => item.Fecha)</div>
             </div>
+
             <div>
                 @Html.DisplayFor(modelItem => item.TextoComentario)
             </div>
-
+            <div class="color-specs-prod">
+                !PONER LA PAGINACION GENTE¡
+            </div>
         </div>
         <hr />
 
     }
-    <div class="color-specs-prod">
-        !PONER LA PAGINACION GENTE¡
-    </div>
+
+
+
 </div>
+
 <br />
 
 
