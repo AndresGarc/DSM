@@ -1,12 +1,12 @@
 ﻿@model System.Collections.Generic.IList<SuperPet.Models.Categoria>
-<hr class="submenu_hr">
-<div class="submenu">
-    <ul>
+
+<div class="submenu text-center">
+    <ul class=" menuA">
         @{ 
             foreach (var item in Model)
             {
                 String aux = item.NombreCat;
-                <li class="nav-item col-sm-1">@Html.ActionLink(aux, "PorCategoria", new { id = item.id})</li>
+                <li class="nav-item col-sm-2 hovvSub">@Html.ActionLink(aux, "PorCategoria", new { id = item.id})</li>
             }
         }
     </ul>
