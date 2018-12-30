@@ -1,0 +1,41 @@
+﻿@model IList<MvcApplication1.Models.Producto>
+@{
+    ViewBag.Title = "Busqueda";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2>BÚSQUEDA</h2>
+<hr>
+<aside class="sidebar-nav-fixed col-lg-3 col-sm-10">
+    <h3>Búsqueda Avanzada</h3>
+    @using (Html.BeginForm("Index", "BusquedaUsuario", FormMethod.Get))
+    {
+        <div class="input-group">
+            <span> Título: </span>
+            <input type="text" name="titulo" class="form-control" placeholder="Título">
+        </div>
+        <div class="input-group">
+            <span> Precio: </span>
+            <input type="range" name="precio" min="0" max="100" class="form-control" placeholder="Búsqueda">
+        </div>
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> BUSCAR </button>
+    }
+</aside>
+
+<div class="col-lg-9 col-sm-10">
+    <h3> RESULTADOS DE LA BÚSQUEDA </h3>
+    <hr>
+    @{ 
+        if(Model!=null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                @Html.Partial("_TarjetaProducto", item);
+            }
+        }
+        else
+        {
+            <p> No hay resultados de búsqueda. </p>
+        }
+    }
+</div>

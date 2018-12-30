@@ -101,14 +101,64 @@ public static void InitializeData ()
 
 
                 CategoriaCEN cat = new CategoriaCEN ();
+                int idCat = cat.New_("Perros");
+                int idCat2 = cat.New_("Gatos");
+                int idCat3 = cat.New_("Peces");
+                int idCat4 = cat.New_("Pájaros");
+                int idCat5 = cat.New_("Reptiles");
+                int idCat6 = cat.New_("Roedores");
+                int idCat7 = cat.New_("Ofertas");
+
+                int idCat11 = cat.New_("Comida");
+                int idCat12 = cat.New_("Higiene");
+                int idCat13 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat11, idCat);
+                cat.CrearSupercategoria(idCat12, idCat);
+                cat.CrearSupercategoria(idCat13, idCat);
+
+                int idCat21 = cat.New_("Comida");
+                int idCat22 = cat.New_("Higiene");
+                int idCat23 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat21, idCat2);
+                cat.CrearSupercategoria(idCat22, idCat2);
+                cat.CrearSupercategoria(idCat23, idCat2);
+
+                int idCat31 = cat.New_("Comida");
+                int idCat32 = cat.New_("Higiene");
+                int idCat33 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat31, idCat3);
+                cat.CrearSupercategoria(idCat32, idCat3);
+                cat.CrearSupercategoria(idCat33, idCat3);
+
+                int idCat41 = cat.New_("Comida");
+                int idCat42 = cat.New_("Higiene");
+                int idCat43 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat41, idCat4);
+                cat.CrearSupercategoria(idCat42, idCat4);
+                cat.CrearSupercategoria(idCat43, idCat4);
+
+                int idCat51 = cat.New_("Comida");
+                int idCat52 = cat.New_("Higiene");
+                int idCat53 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat51, idCat5);
+                cat.CrearSupercategoria(idCat52, idCat5);
+                cat.CrearSupercategoria(idCat53, idCat5);
+
+                int idCat61 = cat.New_("Comida");
+                int idCat62 = cat.New_("Higiene");
+                int idCat63 = cat.New_("Accesorios");
+                cat.CrearSupercategoria(idCat61, idCat6);
+                cat.CrearSupercategoria(idCat62, idCat6);
+                cat.CrearSupercategoria(idCat63, idCat6);
+
+                /*
                 int idCat = cat.New_ ("Perro");
                 int idCat2 = cat.New_ ("Accesorios");
                 // int idCat3 = cat.New_("Perro", "Accesorios");
                 int idCat4 = cat.New_ ("Comida");
                 int idCat5 = cat.New_ ("Pajaro");
                 int idCat6 = cat.New_ ("Accesorios");
-
-
+                
                 List<int> subcats = new List<int>();
                 subcats.Add (idCat2);
                 subcats.Add (idCat4);
@@ -116,6 +166,7 @@ public static void InitializeData ()
                 cat.CrearSupercategoria (idCat2, idCat); //HALLO PRESINDETE
                 cat.CrearSupercategoria (idCat4, idCat);
                 cat.CrearSupercategoria (idCat6, idCat5);
+                */
 
                 //METER OFERTA WE
                 ProductoCEN proCEN = new ProductoCEN ();

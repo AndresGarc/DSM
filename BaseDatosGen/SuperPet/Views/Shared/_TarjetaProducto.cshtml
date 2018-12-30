@@ -1,0 +1,14 @@
+﻿@model MvcApplication1.Models.Producto
+
+<div class="col-md-3 sp-card">
+    <div class="sp-card-img-container">
+        <div>
+            <img onclick="location.href='@Url.Action("Details", "HomeUsuario", new { id = Model.id })'" class="sp-card-img img-responsive" src="@Html.DisplayFor(modelItem => Model.Imagen)">
+        </div>
+    </div>
+    <h5 class="sp-card-name">@Html.DisplayFor(modelItem => Model.Nombre)</h5>
+    <div class="sp-card-info">
+        <h5 class="sp-card-rate">@Html.DisplayFor(modelItem => Model.ValoracionMedia)<span class="glyphicon glyphicon-star sp-card-rate-star"></span></h5>
+        <h5 class="sp-card-price">@Html.DisplayFor(modelItem => Model.Precio) <span class="sp-card-price-grey">/ unidad</span></h5>
+    </div>
+</div>

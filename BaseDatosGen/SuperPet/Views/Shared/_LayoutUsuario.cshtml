@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SuperPet</title>
+    @Styles.Render("~/Content/css")
+    <!-- css para modificar el estilo por defecto -->
+    <link href="~/Content/barraNavegacion.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-light navegacion" id="barra_navegacion">
+        <!-- navbar navbar-inverse navbar-fixed-top
+
+        Barra con logo, nombre web, nombre usuario, logout, (idioma)
+
+            container blanco sinmargen textonegro maxwidth
+            -->
+        <div class="container">
+            <div class="container" id="logo">
+                <a href='@Url.Action("Index", "HomeUsuario")'>
+                    <img src="~/images/LOGO/LOGO.png" width="100" alt="Logotipo" />
+                </a>
+                <span class="titulo">SuperPet</span>
+            </div>
+
+            @using (Html.BeginForm("Index", "BusquedaUsuario", FormMethod.Get))
+            {
+            <div class="input-group">
+                <input type="text" name="titulo" class="form-control" placeholder="Búsqueda">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+            }
+
+            <div class="idioma text-right">
+                <span>CASTELLANO</span>
+                <span> / </span>
+                <span>INGLÉS</span>
+                <br>
+                <!-- esto añade la parte de login/logout -->
+                @Html.Partial("_LoginPartial")
+            </div>
+
+
+
+        </div>
+        <!-- Barra con productos, usuarios, slider, cambio password -->
+        <div class="container bg_verde maxwidth">
+            <!-- container verde sinmargen  -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
+            </div>
+            <div class="navbar-collapse collapse maxwidth">
+                <div class="col-md-1 col-sm-1"></div>
+                <ul class="nav navbar-nav col-md-11 col-sm-11">
+                    <li class="nav-item col-sm-2">@Html.ActionLink("HOME", "Index", "HomeUsuario")</li>
+
+                    @using System;
+                    @using System.Collections.Generic;
+                    @using System.Linq;
+                    @using BaseDatosGenNHibernate.CEN.BaseDatos;
+                    @using BaseDatosGenNHibernate.EN.BaseDatos;
+                    @using BaseDatosGenNHibernate.CAD.BaseDatos;
+                    @using SuperPet.Models;
+                    @{
+                        IList<SuperPet.Models.Categoria> indice = new List<SuperPet.Models.Categoria>();
+                        CategoriaCAD cadCat = new CategoriaCAD();
+                        CategoriaCEN cen = new CategoriaCEN(cadCat);
+                        IList<CategoriaEN> lista = cen.MuestraCategorias(0, -1).ToList();
+
+                        foreach (var item in lista)
+                        {
+                            if (item.Supercategoria == null)
+                            {
+                                indice.Add(new AssemblerCategoria().ConvertENToModelUI(item));
+                                <li class="nav-item col-sm-1 efectoOVER">@Html.ActionLink(item.Nombre, "")</li>
+                            }
+                        }
+                        <li class="nav-item col-sm-2">@Html.ActionLink("BÚSQUEDA", "Index", "BusquedaUsuario")</li>
+                    }
+                </ul>
+
+                @{
+                    foreach (var item in indice)
+                    {
+                        // esto es para poner las subcategorias, pero aun no se muestran
+
+                        IList<SuperPet.Models.Categoria> subCat = new List<SuperPet.Models.Categoria>();
+                        IList<CategoriaEN> listaSub = cen.MuestraCategorias(0, -1).ToList();
+
+                        foreach (var sub in listaSub)
+                        {
+                            if (sub.Supercategoria != null && sub.Supercategoria.Id == item.id)
+                            {
+                                subCat.Add(new AssemblerCategoria().ConvertENToModelUI(sub));
+                            }
+                        }
+                        @Html.Partial("_Submenus", subCat);
+                        
+                    }
+
+                }
+
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SuperPet</p>
+        </footer>
+    </div>
+
+
+    <script>
+        let superCat = document.getElementsByClassName("efectoOVER");
+        let sub = document.getElementsByClassName("submenu");
+
+        for (let i = 0; i < superCat.length; i++) {
+            superCat[i].addEventListener("mouseover", function (evt) {
+                sub[i].style.display = "inherit";
+            });
+            superCat[i].addEventListener("mouseout", function (evt) {
+                sub[i].style.display = "none";
+            });
+            sub[i].addEventListener("mouseover", function (evt) {
+                sub[i].style.display = "inherit";
+            });
+            sub[i].addEventListener("mouseout", function (evt) {
+                sub[i].style.display = "none";
+            });
+        }
+
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
